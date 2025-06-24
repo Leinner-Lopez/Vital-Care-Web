@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/listado.css}" />
+    <title>Listado_Personas</title>
+  </head>
+  <body>
+    <main>
+      <h1>Listado de Pacientes</h1>
+      <table>
+        <tr>
+          <th>Numero Documento</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Email</th>
+          <th>Tipo Documento</th>
+          <th>Acciones</th>
+        </tr>
+        <tr th:each="paciente : ${Listar_Pacientes}">
+          <td th:text="${paciente.numeroDocumento}"></td>
+          <td th:text="${paciente.nombres}"></td>
+          <td th:text="${paciente.apellidos}"></td>
+          <td th:text="${paciente.correo}"></td>
+          <td th:text="${paciente.tipoDocumento}"></td>
+          <td class="Acciones">
+            <a class="Links" id="Editar" th:href="@{/administrador/pacientes/Actualizar/{numeroDocumento}(numeroDocumento=${paciente.numeroDocumento}, nombres=${paciente.nombres}, apellidos=${paciente.apellidos}, tipoDocumento=${paciente.tipoDocumento}, correo=${paciente.correo}, telefono=${paciente.telefono}, barrio=${paciente.barrio},seguroMedico=${paciente.seguroMedico})}">Editar</a>
+            <a class="Links" id="Eliminar" th:href="@{/administrador/pacientes/Eliminar/{numeroDocumento}(numeroDocumento=${paciente.numeroDocumento})}">Eliminar</a>
+          </td>
+        </tr>
+      </table>
+      <div class="contenedor">
+        <a class="Registro" href="/administrador/pacientes/Registrar">Registrar Paciente</a>
+        <a class="Registro" href="/administrador">Pagina Principal</a>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Principal</title>
+</head>
+<body>
+    <h1>Pagina Principal del Medico</h1>
+    <div>
+        <p>Bienvenido, <span th:text="${medico.nombres}"></span></p>
+        <p>Correo electrónico: <span th:text="${medico.correo}"></span></p>
+        <a th:href="@{/logout}">Cerrar Sesión</a>
+    </div>
+</body>
+</html>

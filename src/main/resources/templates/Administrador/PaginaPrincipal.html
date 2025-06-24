@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenida</title>
+</head>
+<body>
+    <h1>Hola administrador</h1>
+    <p>Bienvenido: <span th:text="${administrador.nombres}"></span></p>
+    <p>Correo: <span th:text="${administrador.correo}"></span></p>
+    <a href="/administrador/pacientes">Ver listado de pacientes</a>
+    <a href="/administrador/medicos">Ver listado de medicos</a>
+    <a th:href="@{/logout}">Cerrar Sesión</a>
+</body>
+</html>

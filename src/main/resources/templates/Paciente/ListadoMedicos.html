@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/listado.css}" />
+    <title>Listado_Medicos</title>
+  </head>
+  <body>
+    <main>
+      <h1>Listado de Medicos</h1>
+      <table>
+        <tr>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Especialidad</th>
+          <th>Correo</th>
+          <th>Acción</th>
+        </tr>
+        <tr th:each="medico : ${Listar_Medicos}">
+          <td th:text="${medico.nombres}"></td>
+          <td th:text="${medico.apellidos}"></td>
+          <td th:text="${medico.especialidad}"></td>
+          <td th:text="${medico.correo}"></td>
+          <td class="Acciones">
+            <a class="Links" id="Editar">Agendar Cita</a>
+          </td>
+        </tr>
+      </table>
+      <a class="Registro" href="/paciente">Pagina Principal</a>
+    </main>
+  </body>
+</html>

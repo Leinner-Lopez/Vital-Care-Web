@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Principal</title>
+</head>
+<body>
+    <h1>Pagina Principal del paciente</h1>
+    <div>
+        <p>Bienvenido, <span th:text="${paciente.nombres}"></span></p>
+        <p>Correo electrónico: <span th:text="${paciente.correo}"></span></p>
+        <a href="/paciente/medicos">Visualizar Medicos</a>
+        <a th:href="@{/logout}">Cerrar Sesión</a>
+    </div>
+</body>
+</html>

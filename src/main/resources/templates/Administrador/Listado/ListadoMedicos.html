@@ -26,7 +26,7 @@
           <td th:text="${medico.tipoDocumento}"></td>
           <td class="Acciones">
             <a class="Links" id="Editar" th:href="@{/administrador/medicos/Actualizar/{numeroDocumento}(numeroDocumento=${medico.numeroDocumento}, nombres=${medico.nombres}, apellidos=${medico.apellidos}, tipoDocumento=${medico.tipoDocumento}, correo=${medico.correo}, telefono=${medico.telefono}, barrio=${medico.barrio},especialidad=${medico.especialidad})}">Editar</a>
-            <a class="Links" id="Eliminar" th:href="@{/administrador/medicos/Eliminar/{numeroDocumento}(numeroDocumento=${medico.numeroDocumento})}">Eliminar</a>
+            <a class="Links" id="Eliminar" th:href="@{/administrador/medicos/Eliminar/{numeroDocumento}(numeroDocumento=${medico.numeroDocumento})}" onclick="return confirm('¿Estás seguro de que deseas eliminar este médico?');">Eliminar</a>
           </td>
         </tr>
       </table>

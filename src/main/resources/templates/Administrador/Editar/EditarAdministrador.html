@@ -1,48 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}"/> 
     <meta name="description" content="Pagina de ejemplo" />
     <title>Registro</title>
   </head>
-  <body>
+  <body> 
     <main>
       <h1>Formulario de Registro</h1>
-      <div class="Error" th:if="${error}" th:text="${error}"></div>
-      <form th:object="${paciente}" th:action="${acción}" method="post">
+      <form th:object="${admin}" th:action="${acción}" method="post">
         <fieldset>
           <legend>Información del Usuario</legend>
           <div class="padre">
             <div class="Separación">
               <label for="Nombres">Nombre(s):</label>
-              <input
-                id="Nombres"
-                type="text"
-                placeholder="Pepito"
-                th:field="*{nombres}"
-                required
-              />
+              <input id="Nombres" type="text" placeholder="Pepito" th:field="*{nombres}" required />
             </div>
             <div class="Separación">
               <label for="Last Names">Apellido(s):</label>
-              <input
-                id="Last Names"
-                type="text"
-                placeholder="Gustamante"
-                name="PrimerApellido"
-                th:field="*{apellidos}"
-                required
-              />
+              <input id="Last Names" type="text" placeholder="Gustamante" name="PrimerApellido" th:field="*{apellidos}" required/>
             </div>
           </div>
           <div class="padre2">
             <div class="Separación">
               <label for="Tipos Documento">Tipo de Documento:</label>
               <select id="Tipos Documento" th:field="*{tipoDocumento}" required>
-                <option value="RC">RC</option>
-                <option value="TI">TI</option>
                 <option value="CC">CC</option>
                 <option value="CE">CE</option>
                 <option value="PAS">PAS</option>
@@ -52,12 +36,7 @@
             </div>
             <div class="Separación">
               <label for="NumeroDocumento">Numero de Documento:</label>
-              <input
-                type="text"
-                id="NumeroDocumento"
-                th:field="*{numeroDocumento}"
-                required
-              />
+              <input type="text" id="NumeroDocumento" th:field="*{numeroDocumento}" readonly required/>
             </div>
           </div>
           <div class="padre2">
@@ -199,22 +178,6 @@
                 required
               />
             </div>
-            <div class="Separación">
-              <label for="Seguros">Seguro Medico:</label>
-              <select
-                id="Seguros"
-                name="Seguros Medicos"
-                value="Nueva Eps"
-                th:field="*{seguroMedico}"
-                required
-              >
-                <option value="Nueva Eps">Nueva Eps</option>
-                <option value="Sanitas">Sanitas</option>
-                <option value="Sura">Sura</option>
-                <option value="Compensar">Compensar</option>
-                <option value="Salud Total">Salud Total</option>
-              </select>
-            </div>
           </div>
         </fieldset>
         <fieldset class="padre">
@@ -247,35 +210,18 @@
           <div class="padre">
             <div class="Separación">
               <label for="password">Contraseña:</label>
-              <input
-                id="password"
-                type="password"
-                th:field="*{contrasena}"
-                required
-              />
+              <input id="password" type="password" th:field="*{contrasena}"/>
             </div>
             <div class="Separación">
               <div>
                 <label for="Cpassword">Confirmar Contraseña:</label>
-                <input id="Cpassword" type="password" required />
+                <input id="Cpassword" type="password"/>
               </div>
             </div>
           </div>
         </fieldset>
-        <input type="submit" value="Registrar" / >
+        <input type="submit" value="Registrar" /  >
       </form>
     </main>
-    <script>
-      document
-        .querySelector("form")
-        .addEventListener("submit", function (event) {
-          var password = document.getElementById("password").value;
-          var cpassword = document.getElementById("Cpassword").value;
-          if (password !== cpassword) {
-            alert("Las contraseñas no coinciden.");
-            event.preventDefault();
-          }
-        });
-    </script>
   </body>
 </html>

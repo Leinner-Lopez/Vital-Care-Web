@@ -1,26 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/style.css}"/> 
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
     <meta name="description" content="Pagina de ejemplo" />
     <title>Registro</title>
   </head>
-  <body> 
+  <body>
     <main>
       <h1>Formulario de Registro</h1>
+      <div class="Error" th:if="${error}" th:text="${error}"></div>
       <form th:object="${medico}" th:action="${acción}" method="post">
         <fieldset>
           <legend>Información del Usuario</legend>
           <div class="padre">
             <div class="Separación">
               <label for="Nombres">Nombre(s):</label>
-              <input id="Nombres" type="text" placeholder="Pepito" th:field="*{nombres}" required />
+              <input
+                id="Nombres"
+                type="text"
+                placeholder="Pepito"
+                th:field="*{nombres}"
+                required
+              />
             </div>
             <div class="Separación">
               <label for="Last Names">Apellido(s):</label>
-              <input id="Last Names" type="text" placeholder="Gustamante" name="PrimerApellido" th:field="*{apellidos}" required/>
+              <input
+                id="Last Names"
+                type="text"
+                placeholder="Gustamante"
+                name="PrimerApellido"
+                th:field="*{apellidos}"
+                required
+              />
             </div>
           </div>
           <div class="padre2">
@@ -38,7 +52,12 @@
             </div>
             <div class="Separación">
               <label for="NumeroDocumento">Numero de Documento:</label>
-              <input type="text" id="NumeroDocumento" th:field="*{numeroDocumento}" required/>
+              <input
+                type="text"
+                id="NumeroDocumento"
+                th:field="*{numeroDocumento}"
+                required
+              />
             </div>
           </div>
           <div class="padre2">
@@ -191,7 +210,9 @@
               >
                 <option value="Medicina Interna">Medicina Interna</option>
                 <option value="Pediatría">Pediatría</option>
-                <option value="Ginecología y Obstetricia">Ginecología y Obstetricia</option>
+                <option value="Ginecología y Obstetricia">
+                  Ginecología y Obstetricia
+                </option>
                 <option value="Cirugía General">Cirugía General</option>
                 <option value="Anestesiología">Anestesiología</option>
               </select>
@@ -228,7 +249,12 @@
           <div class="padre">
             <div class="Separación">
               <label for="password">Contraseña:</label>
-              <input id="password" type="password" th:field="*{contrasena}" required />
+              <input
+                id="password"
+                type="password"
+                th:field="*{contrasena}"
+                required
+              />
             </div>
             <div class="Separación">
               <div>
@@ -238,8 +264,20 @@
             </div>
           </div>
         </fieldset>
-        <input type="submit" value="Registrar" /  >
+        <input type="submit" value="Registrar" / >
       </form>
     </main>
+    <script>
+      document
+        .querySelector("form")
+        .addEventListener("submit", function (event) {
+          var password = document.getElementById("password").value;
+          var cpassword = document.getElementById("Cpassword").value;
+          if (password !== cpassword) {
+            alert("Las contraseñas no coinciden.");
+            event.preventDefault();
+          }
+        });
+    </script>
   </body>
 </html>

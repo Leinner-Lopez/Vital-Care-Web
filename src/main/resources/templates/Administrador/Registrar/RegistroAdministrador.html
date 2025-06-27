@@ -11,7 +11,7 @@
     <main>
       <h1>Formulario de Registro</h1>
       <div class="Error" th:if="${error}" th:text="${error}"></div>
-      <form th:object="${paciente}" th:action="${acción}" method="post">
+      <form th:object="${admin}" th:action="${acción}" method="post">
         <fieldset>
           <legend>Información del Usuario</legend>
           <div class="padre">
@@ -198,22 +198,6 @@
                 th:field="*{barrio}"
                 required
               />
-            </div>
-            <div class="Separación">
-              <label for="Seguros">Seguro Medico:</label>
-              <select
-                id="Seguros"
-                name="Seguros Medicos"
-                value="Nueva Eps"
-                th:field="*{seguroMedico}"
-                required
-              >
-                <option value="Nueva Eps">Nueva Eps</option>
-                <option value="Sanitas">Sanitas</option>
-                <option value="Sura">Sura</option>
-                <option value="Compensar">Compensar</option>
-                <option value="Salud Total">Salud Total</option>
-              </select>
             </div>
           </div>
         </fieldset>

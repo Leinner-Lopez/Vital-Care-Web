@@ -9,15 +9,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.leinner.springboot.vital_care.entities.Administrador;
 import com.leinner.springboot.vital_care.entities.Medico;
 import com.leinner.springboot.vital_care.entities.Paciente;
 import com.leinner.springboot.vital_care.services.AdministradorService;
 import com.leinner.springboot.vital_care.services.MedicoService;
 import com.leinner.springboot.vital_care.services.PacienteService;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
 
 
 

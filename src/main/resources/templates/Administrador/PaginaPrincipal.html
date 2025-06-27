@@ -1,17 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenida</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inicio Administrador</title>
+  <link rel="stylesheet" th:href="@{/css/PaginaPrincipal.css}"/>
 </head>
 <body>
-    <h1>Hola administrador</h1>
-    <p>Bienvenido: <span th:text="${administrador.nombres}"></span></p>
-    <p>Correo: <span th:text="${administrador.correo}"></span></p>
-    <a href="/administrador/pacientes">Ver listado de pacientes</a>
-    <a href="/administrador/medicos">Ver listado de medicos</a>
-    <a href="/administrador/administradores">Ver listado de administradores</a>
-    <a th:href="@{/logout}">Cerrar Sesión</a>
+  <div class="container">
+    <div class="card">
+      <div class="header">
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Admin Icon" class="icon"/>
+        <h1>Bienvenido, Administrador</h1>
+        <p class="welcome" th:text="|${administrador.nombres} ${administrador.apellidos}|"></p>
+        <p class="email" th:text="${administrador.correo}"></p>
+      </div>
+      <div class="links">
+        <a class="" href="/administrador/pacientes">📋 Listado de Pacientes</a>
+        <a href="/administrador/medicos">👨‍⚕️ Listado de Médicos</a>
+        <a href="/administrador/administradores">🛡️ Listado de Administradores</a>
+        <a th:href="@{/logout}" class="logout">🔓 Cerrar Sesión</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

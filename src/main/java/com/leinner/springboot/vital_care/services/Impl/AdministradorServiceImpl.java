@@ -1,8 +1,10 @@
 package com.leinner.springboot.vital_care.services.Impl;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.leinner.springboot.vital_care.entities.Administrador;
 import com.leinner.springboot.vital_care.repository.AdministradorRepository;
 import com.leinner.springboot.vital_care.services.AdministradorService;
@@ -44,7 +46,9 @@ public class AdministradorServiceImpl implements AdministradorService{
             adminExistente.setCorreo(administrador.getCorreo());
             adminExistente.setTelefono(administrador.getTelefono());
             adminExistente.setBarrio(administrador.getBarrio());
-            adminExistente.setContrasena(administrador.getContrasena());
+            if(administrador.getContrasena()!=null && !administrador.getContrasena().isEmpty()){
+                adminExistente.setContrasena(administrador.getContrasena());
+            }
             return administradorRepository.save(adminExistente);
         }
         return null;

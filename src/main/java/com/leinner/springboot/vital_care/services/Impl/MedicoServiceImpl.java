@@ -1,6 +1,7 @@
 package com.leinner.springboot.vital_care.services.Impl;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,8 +46,10 @@ public class MedicoServiceImpl implements MedicoService{
             medicoExistente.setCorreo(medico.getCorreo());
             medicoExistente.setTelefono(medico.getTelefono());
             medicoExistente.setBarrio(medico.getBarrio());
-            medicoExistente.setContrasena(medico.getContrasena());
             medicoExistente.setEspecialidad(medico.getEspecialidad());
+            if(medico.getContrasena() != null && !medico.getContrasena().isEmpty()){
+                medicoExistente.setContrasena(medico.getContrasena());
+            }
             return medicoRepository.save(medicoExistente);
         }
         return null;

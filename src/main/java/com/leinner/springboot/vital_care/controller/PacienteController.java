@@ -17,7 +17,6 @@ import com.leinner.springboot.vital_care.services.MedicoService;
 import com.leinner.springboot.vital_care.services.PacienteService;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -55,12 +54,9 @@ public class PacienteController {
         return "Paciente/ListadoCitas";
     } 
 
-    @GetMapping("/citas/Eliminar")
+    @GetMapping("/citas/Eliminar/{id}")
     public String eliminarCita(@PathVariable Long id) {
         citaService.eliminarCita(id);
         return "redirect:/paciente/citas";
     }
-    
-    
-    
 }

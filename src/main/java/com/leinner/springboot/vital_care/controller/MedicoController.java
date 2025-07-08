@@ -6,14 +6,17 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.leinner.springboot.vital_care.dto.CitaDTO;
 import com.leinner.springboot.vital_care.entities.Medico;
 import com.leinner.springboot.vital_care.services.CitaService;
 import com.leinner.springboot.vital_care.services.MedicoService;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
+
 
 
 @RequiredArgsConstructor
@@ -42,5 +45,10 @@ public class MedicoController {
         return "Medico/ListadoCitas";
     }
     
+    @GetMapping("/citas/Eliminar")
+    public String eliminarCita(@PathVariable Long Id) {
+        citaService.eliminarCita(Id);
+        return "redirect:/medico/citas";
+    }
     
 }

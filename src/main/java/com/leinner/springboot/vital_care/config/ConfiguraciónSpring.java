@@ -18,6 +18,9 @@ public class ConfiguraciónSpring {
         http
                 .authorizeHttpRequests(auth -> auth
                                 .requestMatchers("/", "/Registro", "/css/**").permitAll()
+                                .requestMatchers("/paciente/**").hasAuthority("ROLE_PACIENTE")
+                                .requestMatchers("/medico/**").hasAuthority("ROLE_MEDICO")
+                                .requestMatchers("/administrador/**").hasAuthority("ROLE_ADMIN")
                                 .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

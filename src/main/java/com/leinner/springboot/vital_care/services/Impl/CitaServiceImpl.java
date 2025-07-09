@@ -62,6 +62,24 @@ public class CitaServiceImpl implements CitaService{
     }
 
     @Override
+    public List<CitaDTO> ListarCitasMedicas() {
+        List<Cita> citas = citaRepository.findAll();
+        List<CitaDTO> resultado = new ArrayList<>();
+        for(Cita cita: citas){
+            Paciente paciente = pacienteService.obtenerPacientePorId(cita.getDocumentoPaciente());
+            Medico medico = medicoService.obtenerMedicoPorId(cita.getDocumentoMedico());
+            CitaDTO citadto = new CitaDTO();
+            citadto.setId(cita.getId());
+            citadto.setNombrePaciente(paciente.getNombres()+" "+paciente.getApellidos());
+            citadto.setNombreMedico(medico.getNombres()+" "+medico.getApellidos());
+            citadto.setEspecialidadMedico(medico.getEspecialidad());
+            citadto.setFechaCita(cita.getFechaCita());
+            resultado.add(citadto);
+        }
+        return resultado;
+    }
+
+    @Override
     public void eliminarCita(Long id) {
         citaRepository.deleteById(id);
     }
@@ -70,5 +88,4 @@ public class CitaServiceImpl implements CitaService{
     public Cita agendarCita(Cita cita) {
         return citaRepository.save(cita);
     }
-    
 }

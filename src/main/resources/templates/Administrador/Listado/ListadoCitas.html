@@ -11,24 +11,19 @@
       <h1>Listado de Citas</h1>
       <table>
         <tr>
-          <th>Nombre Medico</th>
           <th>Nombre Paciente</th>
+          <th>Nombre Medico</th>
           <th>Especialidad</th>
           <th>Fecha Cita</th>
-          <th>Acción</th>
         </tr>
         <tr th:each="cita : ${Listar_Citas}">
-          <td th:text="${cita.nombreMedico}"></td>
           <td th:text="${cita.nombrePaciente}"></td>
+          <td th:text="${cita.nombreMedico}"></td>
           <td th:text="${cita.especialidadMedico}"></td>
-          <td th:text="${#temporals.format(cita.fechaCita, 'yyyy-MM-dd HH:mm')}"></td>
-          <td class="Acciones">
-            <a class="Links" id="Editar">Editar</a>
-            <a class="Links" id="Eliminar" th:href="@{/medico/citas/Eliminar/{id}(id=${cita.Id})}" onclick="return confirm('¿Estás seguro de que deseas eliminar esta cita medica?');">Eliminar</a>
-          </td>
+          <td th:text="${#temporals.format(cita.fechaCita, 'yyyy-MM-dd HH:mm')}"></td> 
         </tr>
       </table>
-      <a class="Registro" href="/medico">Pagina Principal</a>
+      <a class="Registro" href="/administrador">Pagina Principal</a>
     </main>
   </body>
 </html>

@@ -10,5 +10,6 @@ public interface CitaService {
     Cita agendarCita(Cita cita);
     List<CitaDTO> CitasDocumentoPaciente(Long numeroDocumento);
     List<CitaDTO> CitasDocumentoMedico(Long numeroDocumento);
+    List<CitaDTO> ListarCitasMedicas();
     void eliminarCita(Long id);
 }

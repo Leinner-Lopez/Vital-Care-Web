@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/disponibilidad.css}" />
+    <title>Disponibilidad</title>
+  </head>
+  <body>
+    <main>
+      <h1>Configurar Disponibilidad</h1>
+      <form th:object="${disponibilidad}" method="post" th:action="${acción}">
+        <label for="FechaInicial"
+          >Fecha Inicial:
+          <input class="Fecha" type="datetime-local" id="FechaInicial" name="inicioDisponibilidad" th:field="*{inicioDisponibilidad}"/>
+        </label>
+        <label for="FechaFinal"
+          >Fecha Final:
+          <input class="Fecha" type="datetime-local" id="FechaFinal" name="finDisponibilidad" th:field="*{finDisponibilidad}"/>
+        </label>
+        <input type="submit" id="Enviar" value="Registrar" />
+      </form>
+    </main>
+    <script>
+      // Obtiene la fecha y hora actual en formato compatible con datetime-local
+      const now = new Date();
+      const offset = now.getTimezoneOffset();
+      const localDate = new Date(now.getTime() - offset * 60 * 1000);
+      const minDateTime = localDate.toISOString().slice(0, 16);
+
+      document.getElementById("FechaInicial").min = minDateTime;
+      document.getElementById("FechaFinal").min = minDateTime;
+      // Establece la fecha mínima para fechaFinal
+      document.querySelector("form").addEventListener("submit", function(event){
+        var fechaInicial = document.getElementById("fechaInicial").value;
+        var fechaFinal = document.getElementById("fechaFinal").value;
+        if (fechaFinal <= fechaInicial){
+          event.preventDefault();
+          alert("La fecha final debe ser posterior a la fecha inicial.");
+        }
+      })
+    </script>
+  </body>
+</html>

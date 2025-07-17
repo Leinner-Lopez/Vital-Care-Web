@@ -1,4 +1,5 @@
 package com.leinner.springboot.vital_care.controller;
+
 import java.util.List;
 
 import org.springframework.security.core.Authentication;
@@ -6,10 +7,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.leinner.springboot.vital_care.dto.CitaDTO;
+import com.leinner.springboot.vital_care.entities.Cita;
 import com.leinner.springboot.vital_care.entities.Medico;
 import com.leinner.springboot.vital_care.entities.Paciente;
 import com.leinner.springboot.vital_care.services.CitaService;
@@ -17,9 +21,6 @@ import com.leinner.springboot.vital_care.services.MedicoService;
 import com.leinner.springboot.vital_care.services.PacienteService;
 
 import lombok.RequiredArgsConstructor;
-
-
-
 
 @RequiredArgsConstructor
 @RequestMapping("/paciente")
@@ -30,7 +31,7 @@ public class PacienteController {
     private final CitaService citaService;
 
     @GetMapping
-    public String mostrarPaginaPrincipal(Model model){
+    public String mostrarPaginaPrincipal(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String numeroDocumento = auth.getName();
         Paciente paciente = pacienteService.obtenerPacientePorId(Long.valueOf(numeroDocumento));
@@ -45,6 +46,19 @@ public class PacienteController {
         return "Paciente/ListadoMedicos";
     }
 
+    @GetMapping("/medicos/agendarCita/{numeroDocumento}")
+    public String mostrarInterfazAgendarCitaMedica(@PathVariable Long numeroDocumento, Model model) {
+        Medico medico = medicoService.obtenerMedicoPorId(numeroDocumento);
+        model.addAttribute("medico", medico);
+        return "Paciente/";
+    }
+
+    @PostMapping("/medicos/agendarCita")
+    public String agendarCitaMedica(@ModelAttribute Cita cita, Model model) {
+        citaService.agendarCita(cita);
+        return "redirect:/paciente/medicos";
+    }
+
     @GetMapping("/citas")
     public String mostrarCitas(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -52,7 +66,7 @@ public class PacienteController {
         List<CitaDTO> citas = citaService.CitasDocumentoPaciente(Long.valueOf(numeroDocumento));
         model.addAttribute("Listar_Citas", citas);
         return "Paciente/ListadoCitas";
-    } 
+    }
 
     @GetMapping("/citas/Eliminar/{id}")
     public String eliminarCita(@PathVariable Long id) {

@@ -18,6 +18,7 @@ import com.leinner.springboot.vital_care.entities.Medico;
 import com.leinner.springboot.vital_care.entities.Paciente;
 import com.leinner.springboot.vital_care.services.AdministradorService;
 import com.leinner.springboot.vital_care.services.CitaService;
+import com.leinner.springboot.vital_care.services.DisponibilidadService;
 import com.leinner.springboot.vital_care.services.MedicoService;
 import com.leinner.springboot.vital_care.services.PacienteService;
 
@@ -32,6 +33,7 @@ public class AdministradorController {
     private final MedicoService medicoService;
     private final AdministradorService administradorService;
     private final CitaService citaService;
+    private final DisponibilidadService disponibilidadService;
 
     // Pagina Principal
     @GetMapping
@@ -48,14 +50,14 @@ public class AdministradorController {
     public String listarPacientes(Model model) {
         List<Paciente> pacientes = pacienteService.obtenerPacientes();
         model.addAttribute("Listar_Pacientes", pacientes);
-        return "/Administrador/Listado/ListadoPacientes";
+        return "Administrador/Listado/ListadoPacientes";
     }
 
     @GetMapping("/medicos")
     public String listarMedicos(Model model) {
         List<Medico> medicos = medicoService.obtenerMedicos();
         model.addAttribute("Listar_Medicos", medicos);
-        return "/Administrador/Listado/ListadoMedicos";
+        return "Administrador/Listado/ListadoMedicos";
     }
 
     @GetMapping("/administradores")
@@ -68,7 +70,7 @@ public class AdministradorController {
     @GetMapping("/citas")
     public String listarCitasMedicas(Model model) {
         List<CitaDTO> citas = citaService.ListarCitasMedicas();
-        model.addAttribute("Listar_Citas",citas);
+        model.addAttribute("Listar_Citas", citas);
         return "Administrador/Listado/ListadoCitas";
     }
 
@@ -77,21 +79,21 @@ public class AdministradorController {
     public String mostrarFormularioRegistroPaciente(Model model) {
         model.addAttribute("paciente", new Paciente());
         model.addAttribute("acción", "/administrador/pacientes/Registrar");
-        return "/Administrador/Registrar/RegistroPacientes";
+        return "Administrador/Registrar/RegistroPacientes";
     }
 
     @GetMapping("/medicos/Registrar")
     public String mostrarFormularioRegistroMedicos(Model model) {
         model.addAttribute("medico", new Medico());
         model.addAttribute("acción", "/administrador/medicos/Registrar");
-        return "/Administrador/Registrar/RegistroMedicos";
+        return "Administrador/Registrar/RegistroMedicos";
     }
 
     @GetMapping("/administradores/Registrar")
     public String mostrarFormularioRegistroAdministradores(Model model) {
         model.addAttribute("admin", new Administrador());
         model.addAttribute("acción", "/administrador/administradores/Registrar");
-        return "/Administrador/Registrar/RegistroAdministrador";
+        return "Administrador/Registrar/RegistroAdministrador";
     }
 
     // Registrar Usuario
@@ -117,6 +119,7 @@ public class AdministradorController {
             return "Administrador/Registrar/RegistroMedicos";
         } else {
             medicoService.registrarMedico(medico);
+            disponibilidadService.agregarDisponibilidad(medico.getNumeroDocumento());
             return "redirect:/administrador/medicos";
         }
     }

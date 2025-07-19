@@ -56,7 +56,7 @@ public class MedicoController {
         Long numeroDocumento = Long.valueOf(auth.getName());
         disponibilidadService.actualizarDisponibilidad(numeroDocumento, disponibilidad);
         return "redirect:/medico";
-    }
+    }   
     
     @GetMapping("/citas")
     public String mostrarCitas(Model model) {

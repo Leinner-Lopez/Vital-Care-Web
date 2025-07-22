@@ -14,20 +14,40 @@
           <th>Nombres</th>
           <th>Apellidos</th>
           <th>Especialidad</th>
-          <th>Correo</th>
+          <th>Disponibilidad Final</th>
           <th>Acción</th>
         </tr>
         <tr th:each="medico : ${Listar_Medicos}">
           <td th:text="${medico.nombres}"></td>
           <td th:text="${medico.apellidos}"></td>
           <td th:text="${medico.especialidad}"></td>
-          <td th:text="${medico.correo}"></td>
+          <td th:text="${#temporals.format(medico.disponibilidadFinal, 'yyyy-MM-dd HH:mm')}"
+          ></td>
           <td class="Acciones">
-            <a class="Links" id="Editar">Agendar Cita</a>
+            <a
+              class="Links"
+              id="Editar"
+              th:href="@{/paciente/medicos/agendarCita/{numeroDocumento}(numeroDocumento=${medico.numeroDocumento})}"
+              th:attr="data-disponibilidad-final=${#temporals.format(medico.disponibilidadFinal, 'yyyy-MM-dd HH:mm')}"
+              onclick="return verificarDisponibilidad(this);"
+              >Agendar Cita</a
+            >
           </td>
         </tr>
       </table>
       <a class="Registro" href="/paciente">Pagina Principal</a>
     </main>
+    <script>
+      function verificarDisponibilidad(link){
+        const disponibilidadFinal = link.getAttribute('data-disponibilidad-final');
+        const fechaActual = new Date();
+        const fechaDisponibilidad = new Date(disponibilidadFinal);
+        if(fechaDisponibilidad < fechaActual){
+          alert("La disponibilidad del médico ha expirado.");
+          return false;
+        }
+        return true;
+      }
+    </script>
   </body>
 </html>

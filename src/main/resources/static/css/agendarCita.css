@@ -1,0 +1,43 @@
+html {
+  font-size: 16px;
+}
+body {
+  display: flex;
+  font-family: Helvetica, sans-serif;
+  background-color: rgb(90, 174, 119);
+  align-items: center;
+  min-height: 100vh;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  max-width: 780px;
+  width: 90%;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 30px;
+  padding: 20px 20px 10px 20px;
+  text-align: center;
+  align-items: center;
+  box-shadow: 13px 12px 26px 1px rgba(0, 0, 2, 0.557);
+}
+h1 {
+  color: rgb(90, 174, 119);
+  font-size: 3rem;
+  letter-spacing: 2px;
+  margin-top: 0;
+}
+label {
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  display: block;
+  width: auto;
+  align-items: center;
+  color: rgb(90, 174, 119);
+  font-weight: bold;
+}
+span{
+    color: rgb(0,0,0);
+    font-weight: normal;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/agendarCita.css}">
+    <title>Agendar Cita</title>
+  </head>
+  <body>
+    <main>
+      <h1>Agendar Cita Medica</h1>
+      <form th:object="${cita}" th:action="${acción}" method="post">
+        <label for=""
+          >Nombre(s):
+          <span th:text="${medico.nombres + ' ' + medico.apellidos}"></span
+        ></label>
+        <label for=""
+          >Especialidad: <span th:text="${medico.especialidad}"></span
+        ></label>
+        <label for="fechasDisponibles">Fechas Disponibles: </label>
+        <select id="fechasDisponibles" th:field="*{fechaCita}">
+          <option
+            th:each="fecha : ${fechaDisponibles}"
+            th:value="${fecha}"
+            th:text="${#temporals.format(fecha, 'yyyy-MM-dd HH:mm')}"
+          ></option>
+        </select>
+        <input type="submit" value="Agendar Cita">
+      </form>
+    </main>
+  </body>
+</html>

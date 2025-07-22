@@ -10,6 +10,7 @@ import com.leinner.springboot.vital_care.entities.Cita;
 import com.leinner.springboot.vital_care.entities.Medico;
 import com.leinner.springboot.vital_care.entities.Paciente;
 import com.leinner.springboot.vital_care.repository.CitaRepository;
+import com.leinner.springboot.vital_care.repository.MedicoRepository;
 import com.leinner.springboot.vital_care.services.CitaService;
 import com.leinner.springboot.vital_care.services.MedicoService;
 import com.leinner.springboot.vital_care.services.PacienteService;
@@ -23,6 +24,7 @@ public class CitaServiceImpl implements CitaService{
     private final PacienteService pacienteService;
     private final MedicoService medicoService;
     private final CitaRepository citaRepository;
+    private final MedicoRepository medicoRepository;
 
 
     @Override
@@ -49,7 +51,7 @@ public class CitaServiceImpl implements CitaService{
         List<CitaDTO> resultado = new ArrayList<>();
         for(Cita cita: citas){
             Paciente paciente = pacienteService.obtenerPacientePorId(cita.getDocumentoPaciente());
-            Medico medico = medicoService.obtenerMedicoPorId(cita.getDocumentoMedico());
+            Medico medico = medicoRepository.findById(cita.getDocumentoMedico()).orElse(null);
             CitaDTO citadto = new CitaDTO();
             citadto.setId(cita.getId());
             citadto.setNombrePaciente(paciente.getNombres()+" "+paciente.getApellidos());

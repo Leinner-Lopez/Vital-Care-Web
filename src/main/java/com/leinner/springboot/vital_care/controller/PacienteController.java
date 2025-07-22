@@ -1,5 +1,6 @@
 package com.leinner.springboot.vital_care.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.security.core.Authentication;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.leinner.springboot.vital_care.dto.CitaDTO;
+import com.leinner.springboot.vital_care.dto.MedicoDTO;
 import com.leinner.springboot.vital_care.entities.Cita;
 import com.leinner.springboot.vital_care.entities.Medico;
 import com.leinner.springboot.vital_care.entities.Paciente;
@@ -41,7 +43,7 @@ public class PacienteController {
 
     @GetMapping("/medicos")
     public String mostrarMedicos(Model model) {
-        List<Medico> medicos = medicoService.obtenerMedicos();
+        List<MedicoDTO> medicos = medicoService.obtenerMedicosconDisponibilidad();
         model.addAttribute("Listar_Medicos", medicos);
         return "Paciente/ListadoMedicos";
     }
@@ -49,14 +51,22 @@ public class PacienteController {
     @GetMapping("/medicos/agendarCita/{numeroDocumento}")
     public String mostrarInterfazAgendarCitaMedica(@PathVariable Long numeroDocumento, Model model) {
         Medico medico = medicoService.obtenerMedicoPorId(numeroDocumento);
+        List<LocalDateTime> fechasDisponibles = medicoService.obtenerFechasDisponiblesMedico(numeroDocumento);
         model.addAttribute("medico", medico);
-        return "Paciente/";
+        model.addAttribute("fechaDisponibles", fechasDisponibles);
+        model.addAttribute("acción", "/paciente/medicos/agendarCita/" + numeroDocumento);
+        model.addAttribute("cita", new Cita());
+        return "Paciente/AgendarCita";
     }
 
-    @PostMapping("/medicos/agendarCita")
-    public String agendarCitaMedica(@ModelAttribute Cita cita, Model model) {
+    @PostMapping("/medicos/agendarCita/{numeroDocumento}")
+    public String agendarCitaMedica(@PathVariable Long numeroDocumento,@ModelAttribute Cita cita) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Long numeroDocumentoP = Long.valueOf(auth.getName());
+        cita.setDocumentoPaciente(numeroDocumentoP);
+        cita.setDocumentoMedico(numeroDocumento);
         citaService.agendarCita(cita);
-        return "redirect:/paciente/medicos";
+        return "redirect:/paciente/citas";
     }
 
     @GetMapping("/citas")

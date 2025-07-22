@@ -8,14 +8,12 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
-import com.leinner.springboot.vital_care.dto.CitaDTO;
 import com.leinner.springboot.vital_care.dto.MedicoDTO;
 import com.leinner.springboot.vital_care.entities.Cita;
 import com.leinner.springboot.vital_care.entities.Disponibilidad;
 import com.leinner.springboot.vital_care.entities.Medico;
 import com.leinner.springboot.vital_care.repository.CitaRepository;
 import com.leinner.springboot.vital_care.repository.MedicoRepository;
-import com.leinner.springboot.vital_care.services.CitaService;
 import com.leinner.springboot.vital_care.services.DisponibilidadService;
 import com.leinner.springboot.vital_care.services.MedicoService;
 

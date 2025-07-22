@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/agendarCita.css}">
+    <link rel="stylesheet" th:href="@{/css/agendarCita.css}" />
     <title>Agendar Cita</title>
   </head>
   <body>
@@ -17,15 +17,18 @@
         <label for=""
           >Especialidad: <span th:text="${medico.especialidad}"></span
         ></label>
-        <label for="fechasDisponibles">Fechas Disponibles: </label>
-        <select id="fechasDisponibles" th:field="*{fechaCita}">
-          <option
-            th:each="fecha : ${fechaDisponibles}"
-            th:value="${fecha}"
-            th:text="${#temporals.format(fecha, 'yyyy-MM-dd HH:mm')}"
-          ></option>
-        </select>
-        <input type="submit" value="Agendar Cita">
+        <label for="fechasDisponibles"
+          >Fechas Disponibles:
+          <select id="fechasDisponibles" th:field="*{fechaCita}">
+            <option
+              th:each="fecha : ${fechaDisponibles}"
+              th:value="${fecha}"
+              th:text="${#temporals.format(fecha, 'yyyy-MM-dd HH:mm')}"
+            ></option>
+          </select>
+        </label>
+        <input type="submit" value="Agendar Cita" />
+        <a href="/paciente">Pagina Principal</a>
       </form>
     </main>
   </body>

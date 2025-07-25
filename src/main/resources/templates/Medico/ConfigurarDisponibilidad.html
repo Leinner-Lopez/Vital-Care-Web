@@ -45,12 +45,13 @@
 
       document.getElementById("FechaInicial").min = minDateTime;
       document.getElementById("FechaFinal").min = minDateTime;
+
       // Establece la fecha mínima para fechaFinal
       document
         .querySelector("form")
         .addEventListener("submit", function (event) {
-          var fechaInicial = document.getElementById("fechaInicial").value;
-          var fechaFinal = document.getElementById("fechaFinal").value;
+          var fechaInicial = new Date(document.getElementById("FechaInicial").value);
+          var fechaFinal = new Date (document.getElementById("FechaFinal").value);
           if (fechaFinal <= fechaInicial) {
             event.preventDefault();
             alert("La fecha final debe ser posterior a la fecha inicial.");

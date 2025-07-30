@@ -15,12 +15,15 @@
           <th>Nombre Medico</th>
           <th>Especialidad</th>
           <th>Fecha Cita</th>
+          <th>Estado</th>
         </tr>
         <tr th:each="cita : ${Listar_Citas}">
           <td th:text="${cita.nombrePaciente}"></td>
           <td th:text="${cita.nombreMedico}"></td>
           <td th:text="${cita.especialidadMedico}"></td>
-          <td th:text="${#temporals.format(cita.fechaCita, 'yyyy-MM-dd HH:mm')}"></td> 
+          <td th:text="${#temporals.format(cita.fechaCita, 'yyyy-MM-dd HH:mm')}"></td>
+          <td th:style="${cita.fechaCita > T(java.time.LocalDateTime).now() ? 'color:green;' : 'color:red;'}"
+            th:text="${cita.fechaCita > T(java.time.LocalDateTime).now() ? 'Activa' : 'Inactiva'}"></td> 
         </tr>
       </table>
       <a class="Registro" href="/administrador">Pagina Principal</a>

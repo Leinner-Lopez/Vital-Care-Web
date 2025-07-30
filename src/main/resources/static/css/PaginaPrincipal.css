@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #5daf75;
+  background-color: rgb(90, 193, 236);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,12 +26,13 @@ body {
 
 .icon {
   width: 80px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .header h1 {
-  color: #4caf50;
+  color: rgb(90, 193, 236);
   margin-bottom: 10px;
+  margin-top: 5px;
 }
 
 .welcome {
@@ -54,16 +55,16 @@ body {
 
 .links a {
   text-decoration: none;
-  color: #4caf50;
+  color: rgb(90, 193, 236);
   font-weight: bold;
   padding: 10px;
-  border: 2px solid #4caf50;
+  border: 2px solid rgb(90, 193, 236);
   border-radius: 10px;
   transition: background 0.3s, color 0.3s;
 }
 
 a:hover{
-    background-color: #4caf50;
+    background-color: rgb(90, 193, 236);
     color: white;
 }
 

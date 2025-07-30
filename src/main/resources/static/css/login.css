@@ -4,9 +4,10 @@ html {
 body {
   display: flex;
   font-family: Helvetica, sans-serif;
-  background-color: rgb(90, 174, 119);
+  background-color: rgb(90, 193, 236);
   align-items: center;
   min-height: 100vh;
+  margin: 0;
 }
 form {
   justify-items: center;
@@ -43,9 +44,9 @@ label {
 }
 input[type="submit"] {
   color: white;
-  background-color: rgb(112, 216, 150);
+  background-color: rgb(90, 193, 236);
   font-size: 1.25rem;
-  border-color: rgb(112, 216, 150);
+  border-color: rgb(90, 193, 236);
   border-radius: 30px;
   width: 200px;
   height: 50px;
@@ -76,12 +77,11 @@ input[type="password"] {
 }
 
 a {
-  color: rgb(112, 216, 150);
+  color: rgb(90, 193, 236);
   text-decoration: none;
   font-size: 1.125rem;
 }
 a:hover {
-  color: rgb(90, 174, 119);
   text-decoration: underline;
 }
 .icono{
@@ -96,7 +96,7 @@ a:hover {
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  background-color: rgb(112, 216, 150);
+  background-color: rgb(90, 193, 236);
   margin-bottom: 25px;
 }
 .Error {

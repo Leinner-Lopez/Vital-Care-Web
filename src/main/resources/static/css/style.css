@@ -4,9 +4,10 @@ html {
 body {
   display: flex;
   font-family: Helvetica, sans-serif;
-  background-color: rgb(90, 174, 119);
+  background-color: rgb(90, 193, 236);
   align-items: center;
   min-height: 100vh;
+  margin: 0;
 }
 main {
   display: flex;
@@ -21,7 +22,7 @@ main {
   box-shadow: 13px 12px 26px 1px rgba(0, 0, 2, 0.557);
 }
 h1 {
-  color: rgb(112, 216, 150);
+  color: rgb(90, 193, 236);
   font-size: 1.875rem;
   text-align: center;
   letter-spacing: 2px;
@@ -42,7 +43,7 @@ legend {
 input:focus,
 select:focus {
   outline: none;
-  box-shadow: 0 0 5px rgba(112, 216, 150, 0.9);
+  box-shadow: 0 0 8px rgba(90, 193, 236);
 }
 input[type="text"],
 input[type="email"],
@@ -90,9 +91,9 @@ select {
 }
 input[type="submit"] {
   color: white;
-  background-color: rgb(112, 216, 150);
+  background-color: rgb(90, 193, 236);
   font-size: 1.25rem;
-  border-color: rgb(112, 216, 150);
+  border-color: rgb(90, 193, 236);
   border-radius: 30px;
   width: 20%;
   height: 50px;
@@ -102,12 +103,12 @@ input[type="submit"] {
   justify-content: center;
 }
 a {
-  color: rgb(112, 216, 150);
+  color: rgb(90, 193, 236);
   text-decoration: none;
   font-size: 1.125rem;
 }
 a:hover {
-  color: rgb(90, 174, 119);
+  color: rgb(90, 193, 236);
   text-decoration: underline;
 }
 .Error {

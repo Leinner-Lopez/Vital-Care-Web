@@ -60,7 +60,7 @@ body {
   padding: 10px;
   border: 2px solid rgb(90, 193, 236);
   border-radius: 10px;
-  transition: background 0.3s, color 0.3s;
+  transition: background-color,color  .8s;
 }
 
 a:hover{
@@ -71,6 +71,7 @@ a:hover{
 .logout {
   color: #e53935;
   border-color: #e53935;
+  transition: background-color, color 0.8s;
 }
 
 .logout:hover {

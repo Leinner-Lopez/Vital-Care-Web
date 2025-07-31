@@ -72,6 +72,7 @@ a {
   padding: 10px;
   letter-spacing: 3px;
   font-weight: bold;
+  transition: background-color, color 0.8s;
 }
 .contenedor{
   display: flex;

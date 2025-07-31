@@ -70,7 +70,7 @@ a {
   border: 2px solid rgb(90, 193, 236);
   border-radius: 30px;
   padding: 10px;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   font-weight: bold;
   transition: background-color, color 0.8s;
 }

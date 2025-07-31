@@ -90,14 +90,20 @@ select {
   justify-content: center;
 }
 input[type="submit"] {
-  color: white;
-  background-color: rgb(90, 193, 236);
+  color: rgb(90, 193, 236);
+  background-color: white;
   font-size: 1.25rem;
   border-color: rgb(90, 193, 236);
   border-radius: 30px;
   width: 20%;
   height: 50px;
   letter-spacing: 3px;
+  cursor: pointer;
+  transition: background-color, color 0.8s;
+}
+input[type="submit"]:hover{
+  color: white;
+  background-color: rgb(90, 193, 236);
 }
 .padre3 {
   justify-content: center;
@@ -110,6 +116,20 @@ a {
 a:hover {
   color: rgb(90, 193, 236);
   text-decoration: underline;
+}
+.Regresar {
+  background-color: white;
+  letter-spacing: 2px;
+  font-size: 1.25rem;
+  border-radius: 30px;
+  padding: 12px 15px;
+  border: 2px solid rgb(90, 193, 236);
+  transition: background-color, color .8s;
+}
+.Regresar:hover{
+  background-color: rgb(90, 193, 236);
+  color:white;
+  text-decoration: none;
 }
 .Error {
   color: red;

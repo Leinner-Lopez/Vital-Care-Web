@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/listado.css}" />
-    <link rel="icon" th:href="@{/imagenes/estetoscopio.png}">
+    <link rel="icon" th:href="@{/imagenes/estetoscopio.png}" />
     <title>Listado_Medicos</title>
   </head>
   <body>
@@ -22,7 +22,8 @@
           <td th:text="${medico.nombres}"></td>
           <td th:text="${medico.apellidos}"></td>
           <td th:text="${medico.especialidad}"></td>
-          <td th:text="${#temporals.format(medico.disponibilidadFinal, 'yyyy-MM-dd HH:mm')}"
+          <td
+            th:text="${#temporals.format(medico.disponibilidadFinal, 'yyyy-MM-dd HH:mm')}"
           ></td>
           <td class="Acciones">
             <a
@@ -39,11 +40,13 @@
       <a class="Registro" href="/paciente">Pagina Principal</a>
     </main>
     <script>
-      function verificarDisponibilidad(link){
-        const disponibilidadFinal = link.getAttribute('data-disponibilidad-final');
+      function verificarDisponibilidad(link) {
+        const disponibilidadFinal = link.getAttribute(
+          "data-disponibilidad-final"
+        );
         const fechaActual = new Date();
         const fechaDisponibilidad = new Date(disponibilidadFinal);
-        if(fechaDisponibilidad < fechaActual){
+        if (fechaDisponibilidad < fechaActual) {
           alert("La disponibilidad del médico ha expirado.");
           return false;
         }

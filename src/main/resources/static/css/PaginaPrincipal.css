@@ -1,3 +1,32 @@
+@view-transition{
+  navigation: auto;
+}
+
+::view-transition-old(root){
+  animation: slide-out-to-left .5s ease;
+}
+::view-transition-new(root){
+  animation: slide-in .5s ease;
+}
+
+@keyframes slide-out {
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-in {
+  from{
+    transform: translateX(100%);
+  }
+  to{
+    transform: translateX(0);
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -60,7 +89,7 @@ body {
   padding: 10px;
   border: 2px solid rgb(90, 193, 236);
   border-radius: 10px;
-  transition: background-color,color  .8s;
+  transition: background-color .5s,color  .5s;
 }
 
 a:hover{

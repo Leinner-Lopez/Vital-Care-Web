@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" th:href="@{/css/PaginaPrincipal.css}"/>
-  <link rel="icon" th:href="@{/imagenes/estetoscopio.png}">
-  <title>Inicio Paciente</title>
-</head>
-<body>
-  <div class="container">
-    <div class="card">
-      <div class="header">
-        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Admin Icon" class="icon"/>
-        <h1>Bienvenido, Paciente</h1>
-        <p class="welcome" th:text="|${paciente.nombres} ${paciente.apellidos}|"></p>
-        <p class="email" th:text="${paciente.correo}"></p>
-      </div>
-      <div class="links">
-        <a href="/paciente/medicos">👨‍⚕️ Listado de Médicos</a>
-        <a href="/paciente/citas">😷 Listado de Citas Medicas</a>
-        <a th:href="@{/logout}" class="logout">🔓 Cerrar Sesión</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/PaginaPrincipal.css}" />
+    <link rel="icon" th:href="@{/imagenes/estetoscopio.png}" />
+    <title>Inicio Paciente</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="header">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+            alt="Admin Icon"
+            class="icon"
+          />
+          <h1>Bienvenido, Paciente</h1>
+          <p
+            class="welcome"
+            th:text="|${paciente.nombres} ${paciente.apellidos}|"
+          ></p>
+          <p class="email" th:text="${paciente.correo}"></p>
+        </div>
+        <div class="links">
+          <a href="/paciente/medicos">👨‍⚕️ Listado de Médicos</a>
+          <a href="/paciente/citas">😷 Listado de Citas Medicas</a>
+          <a th:href="@{/logout}" class="logout">🔓 Cerrar Sesión</a>
+        </div>
       </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>

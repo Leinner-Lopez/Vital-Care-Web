@@ -1,3 +1,31 @@
+@view-transition{
+  navigation: auto;
+}
+
+::view-transition-old(root){
+  animation: slide-out-to-left .5s ease;
+}
+::view-transition-new(root){
+  animation: slide-in .5s ease;
+}
+
+@keyframes slide-out {
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-in {
+  from{
+    transform: translateX(100%);
+  }
+  to{
+    transform: translateX(0);
+  }
+}
 html {
   font-size: 16px;
 }
@@ -52,7 +80,7 @@ input[type="submit"] {
   height: 50px;
   margin-top: 20px;
   letter-spacing: 2px;
-  transition: background-color, color 0.8s;
+  transition: background-color 0.3s, color 0.3s;
 }
 input[type="submit"]:hover{
   background-color: rgb(90, 193, 236);

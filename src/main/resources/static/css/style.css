@@ -3,10 +3,10 @@
 }
 
 ::view-transition-old(root){
-  animation: slide-out .5s ease;
+  animation: slide-out .7s ease;
 }
 ::view-transition-new(root){
-  animation: slide-in .5s ease;
+  animation: slide-in .7s ease;
 }
 
 @keyframes slide-out {
@@ -128,7 +128,7 @@ input[type="submit"] {
   height: 50px;
   letter-spacing: 3px;
   cursor: pointer;
-  transition: background-color, color 0.8s;
+  transition: background-color .5s, color .5s;
 }
 input[type="submit"]:hover{
   color: white;

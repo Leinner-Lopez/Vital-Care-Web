@@ -3,10 +3,10 @@
 }
 
 ::view-transition-old(root){
-  animation: slide-out-to-left .5s ease;
+  animation: slide-out .7s ease;
 }
 ::view-transition-new(root){
-  animation: slide-in .5s ease;
+  animation: slide-in .7s ease;
 }
 
 @keyframes slide-out {
@@ -100,7 +100,7 @@ a:hover{
 .logout {
   color: #e53935;
   border-color: #e53935;
-  transition: background-color, color 0.8s;
+  transition: background-color .5s, color .5s;
 }
 
 .logout:hover {

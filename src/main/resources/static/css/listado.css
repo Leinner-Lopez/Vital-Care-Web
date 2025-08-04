@@ -4,10 +4,10 @@
 }
 
 ::view-transition-old(root){
-  animation: slide-out .5s ease;
+  animation: slide-out .7s ease;
 }
 ::view-transition-new(root){
-  animation: slide-in .5s ease;
+  animation: slide-in .7s ease;
 }
 
 @keyframes slide-out {
@@ -27,6 +27,7 @@
     transform: translateX(0);
   }
 }
+
 html {
   font-size: 16px;
 }
@@ -101,7 +102,7 @@ a {
   padding: 10px;
   letter-spacing: 2px;
   font-weight: bold;
-  transition: background-color, color 0.8s;
+  transition: background-color .5s, color .5s;
 }
 .contenedor{
   display: flex;

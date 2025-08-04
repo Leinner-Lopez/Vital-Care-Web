@@ -3,10 +3,10 @@
 }
 
 ::view-transition-old(root){
-  animation: slide-out .5s ease;
+  animation: slide-out .7s ease;
 }
 ::view-transition-new(root){
-  animation: slide-in .5s ease;
+  animation: slide-in .7s ease;
 }
 
 @keyframes slide-out {
@@ -74,6 +74,11 @@ label {
   border-radius: 5px;
   border: 2px solid rgb(90, 193, 236);
   padding: 5px;
+  box-shadow: 0 0 0 rgb(255,255,255);
+  transition: box-shadow .5s;
+}
+.Fecha:hover{
+  box-shadow: 0 0 12px rgb(90, 193, 236);
 }
 input[type="submit"] {
   color: rgb(90, 193, 236);
@@ -85,7 +90,7 @@ input[type="submit"] {
   letter-spacing: 3px;
   cursor: pointer;
   font-weight: bold;
-  transition: background-color, color .8s;
+  transition: background-color .5s, color .5s;
 }
 div{
   display: flex;
@@ -105,7 +110,7 @@ a{
   padding: 10px;
   border: 3px solid rgb(90, 193, 236);
   font-weight: bold;
-  transition: background-color, color .8s;
+  transition: background-color .5s, color .5s;
 }
 a:hover{
   color: white;

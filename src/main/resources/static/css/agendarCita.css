@@ -3,10 +3,10 @@
 }
 
 ::view-transition-old(root){
-  animation: slide-out-to-left .5s ease;
+  animation: slide-out .7s ease;
 }
 ::view-transition-new(root){
-  animation: slide-in .5s ease;
+  animation: slide-in .7s ease;
 }
 
 @keyframes slide-out {
@@ -26,6 +26,7 @@
     transform: translateX(0);
   }
 }
+
 html {
   font-size: 16px;
 }
@@ -87,6 +88,7 @@ input[type="submit"] {
   padding: 10px;
   letter-spacing: 3px;
   font-weight: bold;
+  transition: background-color .5s, color .5s;
 }
 
 input[type="submit"]:hover, a:hover{
@@ -104,4 +106,5 @@ a {
   padding: 10px;
   letter-spacing: 3px;
   font-weight: bold;
+  transition: background-color .5s, color .5s;
 }

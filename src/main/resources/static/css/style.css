@@ -3,10 +3,10 @@
 }
 
 ::view-transition-old(root){
-  animation: slide-out .7s ease;
+  animation: slide-out .7s both cubic-bezier(0.38,0.49,0,1);
 }
 ::view-transition-new(root){
-  animation: slide-in .7s ease;
+  animation: slide-in .7s both cubic-bezier(0.38,0.49,0,1);
 }
 
 @keyframes slide-out {
@@ -153,7 +153,7 @@ a:hover {
   border-radius: 30px;
   padding: 12px 15px;
   border: 2px solid rgb(90, 193, 236);
-  transition: background-color, color .8s;
+  transition: background-color .5s, color .5s;
 }
 .Regresar:hover{
   background-color: rgb(90, 193, 236);

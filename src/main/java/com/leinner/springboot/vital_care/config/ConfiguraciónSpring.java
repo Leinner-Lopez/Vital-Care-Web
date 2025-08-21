@@ -17,7 +17,7 @@ public class ConfiguraciónSpring {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                                .requestMatchers("/", "/Registro", "/css/**","/imagenes/**").permitAll()
+                                .requestMatchers("/", "/Registro", "/css/**","/imagenes/**","/js/**").permitAll()
                                 .requestMatchers("/paciente/**").hasAuthority("ROLE_PACIENTE")
                                 .requestMatchers("/medico/**").hasAuthority("ROLE_MEDICO")
                                 .requestMatchers("/administrador/**").hasAuthority("ROLE_ADMIN")

@@ -1,144 +1,126 @@
-@view-transition{
+@view-transition {
   navigation: auto;
 }
 
-::view-transition-old(root){
-  animation: slide-out .7s both cubic-bezier(0.38,0.49,0,1);
-}
-::view-transition-new(root){
-  animation: slide-in .7s both cubic-bezier(0.38,0.49,0,1);
-}
-
-@keyframes slide-out {
-  from{
-    transform: translateX(0);
-  }
-  to{
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes slide-in {
-  from{
-    transform: translateX(100%);
-  }
-  to{
-    transform: translateX(0);
-  }
-}
-
-html {
-  font-size: 16px;
-}
 body {
   display: flex;
-  font-family: Helvetica, sans-serif;
+  font-family: Helvetica;
   background-color: rgb(90, 193, 236);
   align-items: center;
   min-height: 100vh;
   margin: 0;
 }
-form {
-  justify-items: center;
-}
-main {
-  align-items: center;
+
+.login {
   display: flex;
   flex-direction: column;
-  max-width: 380px;
-  width: 90%;
+  align-items: center;
+  text-align: center;
+  min-width: 340px;
   margin: 0 auto;
-  background-color: white;
+  background-color: #fff;
   border-radius: 30px;
   padding: 30px 20px 10px 20px;
-  text-align: center;
   box-shadow: 13px 12px 26px 1px rgba(0, 0, 2, 0.557);
 }
-input:focus {
-  outline: none;
-}
-h1 {
-  color: rgb(90, 174, 119);
-  font-size: 3.76rem;
-  letter-spacing: 2px;
-  margin-top: 0;
-}
-label {
-  font-size: 18px;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
-  display: block;
-  width: auto;
-  align-items: center;
-}
-input[type="submit"] {
-  color: rgb(90, 193, 236);
-  background-color: white;
-  font-size: 1.25rem;
-  border-color: rgb(90, 193, 236);
-  border-radius: 30px;
-  width: 200px;
-  height: 50px;
-  margin-top: 20px;
-  letter-spacing: 2px;
-  transition: background-color .5s, color .5s;
-  cursor: pointer;
-}
-input[type="submit"]:hover{
-  background-color: rgb(90, 193, 236);
-  color:white;
-}
-.input-container {
+
+.login__icon-container {
   display: flex;
-  align-items: center;
-  border-radius: 4px;
-  width: 300px;
-  height: 50px;
-  border-bottom: 2px solid #ccc;
-  margin-bottom: 35px;
-}
-.icon {
-  width: 9%; /* Ancho del SVG */
-  height: 100%; /* Alto del SVG */
-  margin-right: 8px;
-}
-
-input[type="text"],
-input[type="password"] {
-  font-size: 1.25rem;
-  border: none;
-  width: 100%;
-  height: 90%;
-}
-
-a {
-  color: rgb(90, 193, 236);
-  text-decoration: none;
-  font-size: 1.125rem;
-}
-a:hover {
-  text-decoration: underline;
-}
-.icono{
-  width: 50px;
-  height: 50px;
-}
-.circle{
   justify-content: center;
-  justify-items: center;
   align-items: center;
-  align-content: center;
   width: 90px;
   height: 90px;
   border-radius: 50%;
   background-color: rgb(90, 193, 236);
   margin-bottom: 25px;
 }
-.Error {
-  color: red;
-  font-size: 1.125rem;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  font-weight: bold;
+
+.main-icon {
+  width: 50px;
+  height: 50px;
 }
 
+.form__input-container {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  width: 300px;
+  height: 50px;
+  border-bottom: 2px solid rgba(90, 193, 236);
+  margin-bottom: 35px;
+}
+
+.icon {
+  width: 9%;
+  height: 100%;
+  margin-right: 8px;
+}
+
+input {
+  font-size: 1.25rem;
+  border: none;
+  width: 100%;
+  height: 90%;
+}
+
+input:focus {
+  outline: none;
+}
+
+.form__button {
+  color: #fff;
+  background-color: rgb(90, 193, 236);
+  font-size: 1.25em;
+  font-weight: bold;
+  border: 2px solid rgb(90, 193, 236);
+  border-radius: 30px;
+  width: 200px;
+  height: 50px;
+  letter-spacing: 2px;
+  transition: background-color .5s, color .5s;
+  cursor: pointer;
+}
+
+.form__button:hover {
+  background-color: #fff;
+  color: rgb(90, 193, 236);
+}
+
+p{
+  font-size: 1.1em;
+}
+a {
+  color: rgb(90, 193, 236);
+}
+
+a:not(:is(:hover, :active)) {
+  text-decoration: none;
+}
+
+::view-transition-old(root) {
+  animation: slide-out 1s both cubic-bezier(0.38, 0.49, 0, 1);
+}
+
+::view-transition-new(root) {
+  animation: slide-in 1s both cubic-bezier(0.38, 0.49, 0, 1);
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}

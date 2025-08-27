@@ -23,9 +23,9 @@
           ></p>
           <p class="email" th:text="${paciente.correo}"></p>
         </div>
-        <div class="links">
-          <a href="/paciente/medicos">👨‍⚕️ Listado de Médicos</a>
-          <a href="/paciente/citas">😷 Listado de Citas Medicas</a>
+        <div class="links-container">
+          <a class="link" href="/paciente/medicos">👨‍⚕️ Listado de Médicos</a>
+          <a class="link" href="/paciente/citas">😷 Listado de Citas Medicas</a>
           <a th:href="@{/logout}" class="logout">🔓 Cerrar Sesión</a>
         </div>
       </div>

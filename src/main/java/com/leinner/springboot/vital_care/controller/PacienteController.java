@@ -74,7 +74,7 @@ public class PacienteController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String numeroDocumento = auth.getName();
         List<CitaDTO> citas = citaService.CitasDocumentoPaciente(Long.valueOf(numeroDocumento));
-        model.addAttribute("Listar_Citas", citas);
+        model.addAttribute("Listar__Citas", citas);
         return "Paciente/ListadoCitas";
     }
 

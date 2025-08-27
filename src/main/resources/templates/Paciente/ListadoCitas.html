@@ -1,49 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/listado.css}" />
+    <link rel="stylesheet" th:href="@{/css/Tabla.css}" />
     <link rel="icon" th:href="@{/imagenes/estetoscopio.png}">
     <title>Listado_Medicos</title>
-  </head>
-  <body>
-    <main>
-      <h1>Listado de Citas</h1>
-      <table>
-        <tr>
-          <th>Nombre Paciente</th>
-          <th>Nombre Medico</th>
-          <th>Especialidad</th>
-          <th>Fecha Cita</th>
-          <th>Estado</th>
-          <th>Acción</th>
-        </tr>
-        <tr th:each="cita : ${Listar_Citas}">
-          <td th:text="${cita.nombrePaciente}"></td>
-          <td th:text="${cita.nombreMedico}"></td>
-          <td th:text="${cita.especialidadMedico}"></td>
-          <td
-            th:text="${#temporals.format(cita.fechaCita, 'yyyy-MM-dd HH:mm')}"
-          ></td>
-          <td
-            th:style="${cita.fechaCita != null && cita.fechaCita > T(java.time.LocalDateTime).now() ? 'color: rgb(90, 174, 119);' : 'color: rgb(185, 34, 34);'}"
-            th:text="${cita.fechaCita != null && cita.fechaCita > T(java.time.LocalDateTime).now() ? 'Activo' : 'Inactivo'}"
-          ></td>
-          <td class="Acciones">
-            <a class="Links" id="Editar">Editar</a>
-            <a
-              class="Links"
-              id="Eliminar"
-              th:href="@{/paciente/citas/Eliminar/{id}(id=${cita.Id})}"
-              onclick="return confirm('¿Estás seguro de que deseas eliminar esta cita medica?');"
-              >Eliminar</a
-            >
-          </td>
-        </tr>
-      </table>
-      <a class="Registro" href="/paciente">Pagina Principal</a>
+</head>
+
+<body>
+    <main class="list">
+        <h1>Listado de Citas</h1>
+        <table class="list__table">
+            <thead class="table__title">
+                <tr class="title__row">
+                    <th class="row__title">Nombre Paciente</th>
+                    <th class="row__title">Nombre Medico</th>
+                    <th class="row__title">Especialidad</th>
+                    <th class="row__title">Fecha Cita</th>
+                    <th class="row__title">Estado</th>
+                    <th class="row__title">Acción</th>
+                </tr>
+            </thead>
+            <tbody class="table__body">
+                <tr class="body__row" th:each="cita : ${Listar__Citas}">
+                    <td class="row__content" th:text="${cita.nombrePaciente}">Leinner</td>
+                    <td class="row__content" th:text="${cita.nombreMedico}">Leinner</td>
+                    <td class="row__content" th:text="${cita.especialidadMedico}">Enfermero</td>
+                    <td class="row__content" th:text="${#temporals.format(cita.fechaCita, 'yyyy-MM-dd HH:mm')}">
+                        26-10-2024 05:00</td>
+                    <td class="row__content"
+                        th:style="${cita.fechaCita != null && cita.fechaCita > T(java.time.LocalDateTime).now() ? 'color: rgb(90, 174, 119);' : 'color: rgb(185, 34, 34);'}"
+                        th:text="${cita.fechaCita != null && cita.fechaCita > T(java.time.LocalDateTime).now() ? 'Activo' : 'Inactivo'}">
+                        Activo</td>
+                    <td class="row__content">
+                        <a class="content__link" th:href="@{/paciente/citas/Eliminar/{id}(id=${cita.Id})}"
+                            onclick="return confirm('¿Estás seguro de que deseas eliminar esta cita medica?');">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a class="list__button" href="/paciente">Pagina Principal</a>
     </main>
-    <script></script>
-  </body>
+</body>
 </html>

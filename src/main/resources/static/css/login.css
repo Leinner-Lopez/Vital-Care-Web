@@ -5,7 +5,7 @@
 body {
   display: flex;
   font-family: Helvetica;
-  background-color: rgb(90, 193, 236);
+  background-color: #5ac1ec;
   align-items: center;
   min-height: 100vh;
   margin: 0;

@@ -77,7 +77,7 @@ h1 {
 
 .list__button:is(:hover, :active) {
     background-color: #fff;
-    color: rgb(90, 193, 236);
+    color: #5ac1ec;
     box-shadow: 0 0 15px rgb(90, 193, 236);
 }
 

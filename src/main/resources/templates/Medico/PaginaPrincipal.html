@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" th:href="@{/css/PaginaPrincipal.css}"/>
+  <link rel="stylesheet" th:href="@{css/PaginaPrincipal.css}"/>
   <link rel="icon" th:href="@{/imagenes/estetoscopio.png}">
   <title>Inicio Medico</title>
 </head>
@@ -16,9 +16,9 @@
         <p class="welcome" th:text="|${medico.nombres} ${medico.apellidos}|"></p>
         <p class="email" th:text="${medico.correo}"></p>
       </div>
-      <div class="links">
-        <a href="/medico/disponibilidad">📅 Modificar Disponibilidad</a>
-        <a href="/medico/citas">😷 Listado de Citas Medicas</a>
+      <div class="links-container">
+        <a class="link" href="/medico/disponibilidad">📅 Modificar Disponibilidad</a>
+        <a class="link" href="/medico/citas">😷 Listado de Citas Medicas</a>
         <a th:href="@{/logout}" class="logout">🔓 Cerrar Sesión</a>
       </div>
     </div>

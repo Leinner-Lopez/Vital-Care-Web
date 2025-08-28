@@ -54,7 +54,7 @@ label {
 input,
 select,
 .link {
-  background-color: rgba(90, 193, 236, .1);
+  background-color: #5ac1ec1a;
   width: 100%;
   padding: 10px;
   font-size: 1.1em;

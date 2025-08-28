@@ -16,11 +16,11 @@
         <p class="welcome" th:text="|${administrador.nombres} ${administrador.apellidos}|"></p>
         <p class="email" th:text="${administrador.correo}"></p>
       </div>
-      <div class="links">
-        <a class="" href="/administrador/pacientes">📋 Listado de Pacientes</a>
-        <a href="/administrador/medicos">👨‍⚕️ Listado de Médicos</a>
-        <a href="/administrador/administradores">🛡️ Listado de Administradores</a>
-        <a href="/administrador/citas">😷 Listado de Citas Medicas</a>
+      <div class="links-container">
+        <a class="link" href="/administrador/pacientes">📋 Listado de Pacientes</a>
+        <a class="link" href="/administrador/medicos">👨‍⚕️ Listado de Médicos</a>
+        <a class="link" href="/administrador/administradores">🛡️ Listado de Administradores</a>
+        <a class="link" href="/administrador/citas">😷 Listado de Citas Medicas</a>
         <a th:href="@{/logout}" class="logout">🔓 Cerrar Sesión</a>
       </div>
     </div>

@@ -1,63 +1,37 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/disponibilidad.css}" />
+    <link rel="stylesheet" th:href="@{/css/Disponibilidad.css}" />
     <link rel="icon" th:href="@{/imagenes/estetoscopio.png}">
     <title>Disponibilidad</title>
-  </head>
-  <body>
-    <main>
-      <h1>Configurar Disponibilidad</h1>
-      <form th:object="${disponibilidad}" method="post" th:action="${acción}">
-        <label for="FechaInicial"
-          >Fecha Inicial:
-          <input
-            class="Fecha"
-            type="datetime-local"
-            id="FechaInicial"
-            name="inicioDisponibilidad"
-            th:field="*{inicioDisponibilidad}"
-          />
-        </label>
-        <label for="FechaFinal"
-          >Fecha Final:
-          <input
-            class="Fecha"
-            type="datetime-local"
-            id="FechaFinal"
-            name="finDisponibilidad"
-            th:field="*{finDisponibilidad}"
-          />
-        </label>
-        <div>
-          <input type="submit" id="Enviar" value="Actualizar" />
-          <a href="/medico">Pagina principal</a>
-        </div>
-      </form>
+</head>
+
+<body>
+    <main class="card">
+        <h1>Configurar Disponibilidad</h1>
+        <form class="card__form" th:object="${disponibilidad}" method="post" th:action="${acción}">
+            <div class="form__input-container">
+                <label for="FechaInicial">Fecha Inicial:
+                    <input class="input-Fecha" type="datetime-local" id="FechaInicial" name="inicioDisponibilidad"
+                        th:field="*{inicioDisponibilidad}" />
+                </label>
+            </div>
+            <div class="form__input-container">
+                <label for="FechaFinal">Fecha Final:
+                    <input class="input-Fecha" type="datetime-local" id="FechaFinal" name="finDisponibilidad"
+                        th:field="*{finDisponibilidad}" />
+                </label>
+            </div>
+            <div class="form__input-container">
+                <input class="button" type="submit" id="Enviar" value="Actualizar" />
+                <a class="button" href="/medico">Pagina principal</a>
+            </div>
+        </form>
     </main>
-    <script>
-      // Obtiene la fecha y hora actual en formato compatible con datetime-local
-      const now = new Date();
-      const offset = now.getTimezoneOffset();
-      const localDate = new Date(now.getTime() - offset * 60 * 1000);
-      const minDateTime = localDate.toISOString().slice(0, 16);
+    <script th:src="@{/js/ConfigurarFecha.js}"></script>
+</body>
 
-      document.getElementById("FechaInicial").min = minDateTime;
-      document.getElementById("FechaFinal").min = minDateTime;
-
-      // Establece la fecha mínima para fechaFinal
-      document
-        .querySelector("form")
-        .addEventListener("submit", function (event) {
-          var fechaInicial = new Date(document.getElementById("FechaInicial").value);
-          var fechaFinal = new Date (document.getElementById("FechaFinal").value);
-          if (fechaFinal <= fechaInicial) {
-            event.preventDefault();
-            alert("La fecha final debe ser posterior a la fecha inicial.");
-          }
-        });
-    </script>
-  </body>
 </html>

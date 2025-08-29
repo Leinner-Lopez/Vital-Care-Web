@@ -1,36 +1,39 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/agendarCita.css}" />
+    <link rel="stylesheet" th:href="@{/css/AgendarCita.css}" />
     <link rel="icon" th:href="@{/imagenes/estetoscopio.png}">
     <title>Agendar Cita</title>
-  </head>
-  <body>
-    <main>
-      <h1>Agendar Cita Medica</h1>
-      <form th:object="${cita}" th:action="${acción}" method="post">
-        <label for=""
-          >Nombre(s):
-          <span th:text="${medico.nombres + ' ' + medico.apellidos}"></span
-        ></label>
-        <label for=""
-          >Especialidad: <span th:text="${medico.especialidad}"></span
-        ></label>
-        <label for="fechasDisponibles"
-          >Fechas Disponibles:
-          <select id="fechasDisponibles" th:field="*{fechaCita}">
-            <option
-              th:each="fecha : ${fechaDisponibles}"
-              th:value="${fecha}"
-              th:text="${#temporals.format(fecha, 'yyyy-MM-dd HH:mm')}"
-            ></option>
-          </select>
-        </label>
-        <input type="submit" value="Agendar Cita" />
-        <a href="/paciente">Pagina Principal</a>
-      </form>
+</head>
+
+<body>
+    <main class="card">
+        <h1>Agendar Cita Medica</h1>
+        <form th:object="${cita}" th:action="${acción}" method="post" class="card__form">
+            <div class="form__container">
+                <label>Nombre:
+                    <span th:text="${medico.nombres + ' ' + medico.apellidos}"></span></label>
+            </div>
+            <div class="form__container">
+                <label>Especialidad: <span th:text="${medico.especialidad}"></span></label>
+            </div>
+            <div class="form-container">
+                <label for="fechasDisponibles">Fechas Disponibles:
+                    <select class="input-select" id="fechasDisponibles" th:field="*{fechaCita}">
+                        <option th:each="fecha : ${fechaDisponibles}" th:value="${fecha}"
+                            th:text="${#temporals.format(fecha, 'yyyy-MM-dd HH:mm')}"></option>
+                    </select>
+                </label>
+            </div>
+            <div class="form__container">
+                <input  class="button" type="submit" value="Agendar Cita" />
+                <a class="button" href="/paciente/medicos">Regresar</a>
+            </div>
+        </form>
     </main>
-  </body>
+</body>
+
 </html>

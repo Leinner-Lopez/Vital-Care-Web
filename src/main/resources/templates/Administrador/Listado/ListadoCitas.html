@@ -1,33 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/listado.css}" />
-    <link rel="icon" th:href="@{/imagenes/estetoscopio.png}">
-    <title>Listado_Medicos</title>
-  </head>
-  <body>
-    <main>
-      <h1>Listado de Citas</h1>
-      <table>
-        <tr>
-          <th>Nombre Paciente</th>
-          <th>Nombre Medico</th>
-          <th>Especialidad</th>
-          <th>Fecha Cita</th>
-          <th>Estado</th>
-        </tr>
-        <tr th:each="cita : ${Listar_Citas}">
-          <td th:text="${cita.nombrePaciente}"></td>
-          <td th:text="${cita.nombreMedico}"></td>
-          <td th:text="${cita.especialidadMedico}"></td>
-          <td th:text="${#temporals.format(cita.fechaCita, 'yyyy-MM-dd HH:mm')}"></td>
-          <td th:style="${cita.fechaCita > T(java.time.LocalDateTime).now() ? 'color:green;' : 'color:red;'}"
-            th:text="${cita.fechaCita > T(java.time.LocalDateTime).now() ? 'Activa' : 'Inactiva'}"></td> 
-        </tr>
-      </table>
-      <a class="Registro" href="/administrador">Pagina Principal</a>
+    <link rel="stylesheet" th:href="@{/css/Listados.css}" />
+    <link rel="icon" th:href="@{/imagenes/este  toscopio.png}">
+    <title>Listado Citas</title>
+</head>
+
+<body>
+    <main class="list">
+        <h1>Listado Citas</h1>
+        <table class="list__table">
+            <thead class="table__title">
+                <tr class="title__row">
+                    <th class="row__title">Nombre Paciente</th>
+                    <th class="row__title">Nombre Medico</th>
+                    <th class="row__title">Especialidad</th>
+                    <th class="row__title">Fecha Cita</th>
+                    <th class="row__title">Estado</th>
+                </tr>
+            </thead>
+            <tbody class="table__body">
+                <tr class="body__row" th:each="cita : ${Listar_Citas}">
+                    <td class="row__content" th:text="${cita.nombrePaciente}"></td>
+                    <td class="row__content" th:text="${cita.nombreMedico}"></td>
+                    <td class="row__content" th:text="${cita.especialidadMedico}"></td>
+                    <td class="row__content" th:text="${#temporals.format(cita.fechaCita, 'yyyy-MM-dd HH:mm')}"></td>
+                    <td class="row__content"
+                        th:style="${cita.fechaCita > T(java.time.LocalDateTime).now() ? 'color:green;' : 'color:red;'}"
+                        th:text="${cita.fechaCita > T(java.time.LocalDateTime).now() ? 'Activa' : 'Inactiva'}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="list__container-button">
+            <a class="container-button__button" href="/administrador">Pagina Principal</a>
+        </div>
     </main>
-  </body>
+</body>
+
 </html>

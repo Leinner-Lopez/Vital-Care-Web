@@ -20,7 +20,7 @@ body {
     margin: auto;
     background-color: #fff;
     border-radius: 30px;
-    padding: 20px 20px 10px 20px;
+    padding: 20px;
     align-items: center;
     box-shadow: 13px 12px 26px 1px rgba(0, 0, 2, 0.557);
 }
@@ -49,33 +49,34 @@ h1 {
     border-radius: 10px;
 }
 
-.content__link,
-.list__button {
+.content__link {
     color: rgb(185, 34, 34);
     cursor: pointer;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .content__link:is(:hover, :active) {
     text-decoration: underline;
 }
 
-.list__button {
+
+.container-button__button {
+    text-decoration: none;
     text-align: center;
-    width: 300px;
     background-color: rgb(90, 193, 236);
     color: #fff;
-    font-size: 1.6em;
+    font-size: 1.4em;
     border: 2px solid rgb(90, 193, 236);
     border-radius: 30px;
-    padding: 5px;
+    padding: 12px;
     letter-spacing: 1px;
     font-weight: bold;
     box-shadow: none;
     transition: background-color .5s, color .5s, box-shadow .5s;
 }
 
-.list__button:is(:hover, :active) {
+.container-button__button:is(:hover, :active) {
     background-color: #fff;
     color: #5ac1ec;
     box-shadow: 0 0 15px rgb(90, 193, 236);

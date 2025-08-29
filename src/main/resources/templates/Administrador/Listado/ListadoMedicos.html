@@ -1,40 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/listado.css}" />
+    <link rel="stylesheet" th:href="@{/css/Listados.css}" />
     <link rel="icon" th:href="@{/imagenes/estetoscopio.png}">
-    <title>Listado_Medicos</title>
-  </head>
-  <body>
-    <main>
-      <h1>Listado de Medicos</h1>
-      <table>
-        <tr>
-          <th>Numero Documento</th>
-          <th>Nombre(s)</th>
-          <th>Apellido(s)</th>
-          <th>Especialidad</th>
-          <th>Tipo Documento</th>
-          <th>Acciones</th>
-        </tr>
-        <tr th:each="medico : ${Listar_Medicos}">
-          <td th:text="${medico.numeroDocumento}"></td>
-          <td th:text="${medico.nombres}"></td>
-          <td th:text="${medico.apellidos}"></td>
-          <td th:text="${medico.especialidad}"></td>
-          <td th:text="${medico.tipoDocumento}"></td>
-          <td class="Acciones">
-            <a class="Links" id="Editar" th:href="@{/administrador/medicos/Actualizar/{numeroDocumento}(numeroDocumento=${medico.numeroDocumento}, nombres=${medico.nombres}, apellidos=${medico.apellidos}, tipoDocumento=${medico.tipoDocumento}, correo=${medico.correo}, telefono=${medico.telefono}, barrio=${medico.barrio},especialidad=${medico.especialidad})}">Editar</a>
-            <a class="Links" id="Eliminar" th:href="@{/administrador/medicos/Eliminar/{numeroDocumento}(numeroDocumento=${medico.numeroDocumento})}" onclick="return confirm('¿Estás seguro de que deseas eliminar este médico?');">Eliminar</a>
-          </td>
-        </tr>
-      </table>
-      <div class="contenedor">
-        <a class="Registro" href="/administrador/medicos/Registrar">Registrar Medico</a>
-        <a class="Registro" href="/administrador" >Pagina Principal</a>
-      </div>
+    <title>Listado Medicos</title>
+</head>
+
+<body>
+    <main class="list">
+        <h1>Listado Medicos</h1>
+        <table class="list__table">
+            <thead class="table__title">
+                <tr class="title__row">
+                    <th class="row__title">Tipo Documento</th>
+                    <th class="row__title">Numero Documento</th>
+                    <th class="row__title">Nombre(s)</th>
+                    <th class="row__title">Apellido(s)</th>
+                    <th class="row__title">Especialidad</th>
+                    <th class="row__title">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="table__body">
+                <tr class="body__row" th:each="medico : ${Listar_Medicos}">
+                    <td class="row__content" th:text="${medico.tipoDocumento}"></td>
+                    <td class="row__content" th:text="${medico.numeroDocumento}"></td>
+                    <td class="row__content" th:text="${medico.nombres}"></td>
+                    <td class="row__content" th:text="${medico.apellidos}"></td>
+                    <td class="row__content" th:text="${medico.especialidad}"></td>
+                    <td class="row__content">
+                        <a class="content__link"
+                            th:href="@{/administrador/medicos/Actualizar/{numeroDocumento}(numeroDocumento=${medico.numeroDocumento}, nombres=${medico.nombres}, apellidos=${medico.apellidos}, tipoDocumento=${medico.tipoDocumento}, correo=${medico.correo}, telefono=${medico.telefono}, barrio=${medico.barrio},especialidad=${medico.especialidad})}"
+                            style="color: rgb(90,193,236);"
+                            onclick="return confirm('¿Estás seguro de que deseas editar este medico?');">Editar</a>
+                        <a class="content__link"
+                            th:href="@{/administrador/medicos/Eliminar/{numeroDocumento}(numeroDocumento=${medico.numeroDocumento})}"
+                            onclick="return confirm('¿Estás seguro de que deseas eliminar este médico?');">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="list__container-button">
+            <a class="container-button__button" href="/administrador/medicos/Registrar">Registrar Medico</a>
+            <a class="container-button__button" href="/administrador">Pagina Principal</a>
+        </div>
     </main>
-  </body>
+</body>
+
 </html>

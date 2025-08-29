@@ -1,40 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/listado.css}" />
+    <link rel="stylesheet" th:href="@{/css/Listados.css}" />
     <link rel="icon" th:href="@{/imagenes/estetoscopio.png}">
-    <title>Listado_Personas</title>
-  </head>
-  <body>
-    <main>
-      <h1>Listado de Pacientes</h1>
-      <table>
-        <tr>
-          <th>Numero Documento</th>
-          <th>Nombre(s)</th>
-          <th>Apellido(s)</th>
-          <th>Email</th>
-          <th>Tipo Documento</th>
-          <th>Acciones</th>
-        </tr>
-        <tr th:each="paciente : ${Listar_Pacientes}">
-          <td th:text="${paciente.numeroDocumento}"></td>
-          <td th:text="${paciente.nombres}"></td>
-          <td th:text="${paciente.apellidos}"></td>
-          <td th:text="${paciente.correo}"></td>
-          <td th:text="${paciente.tipoDocumento}"></td>
-          <td class="Acciones">
-            <a class="Links" id="Editar" th:href="@{/administrador/pacientes/Actualizar/{numeroDocumento}(numeroDocumento=${paciente.numeroDocumento}, nombres=${paciente.nombres}, apellidos=${paciente.apellidos}, tipoDocumento=${paciente.tipoDocumento}, correo=${paciente.correo}, telefono=${paciente.telefono}, barrio=${paciente.barrio},seguroMedico=${paciente.seguroMedico})}">Editar</a>
-            <a class="Links" id="Eliminar" th:href="@{/administrador/pacientes/Eliminar/{numeroDocumento}(numeroDocumento=${paciente.numeroDocumento})}" onclick="return confirm('¿Estás seguro de que deseas eliminar este paciente?');">Eliminar</a>
-          </td>
-        </tr>
-      </table>
-      <div class="contenedor">
-        <a class="Registro" href="/administrador/pacientes/Registrar">Registrar Paciente</a>
-        <a class="Registro" href="/administrador">Pagina Principal</a>
-      </div>
+    <title>Listado Pacientes</title>
+</head>
+
+<body>
+    <main class="list">
+        <h1>Listado de Pacientes</h1>
+        <table class="list__table">
+            <thead class="table__title">
+                <tr class="title__row">
+                    <th class="row__title">Tipo Documento</th>
+                    <th class="row__title">Numero Documento</th>
+                    <th class="row__title">Nombre(s)</th>
+                    <th class="row__title">Apellido(s)</th>
+                    <th class="row__title">Correo</th>
+                    <th class="row__title">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="table__body">
+                <tr class="body__row" th:each="paciente : ${Listar_Pacientes}">
+                    <td class="row__content" th:text="${paciente.tipoDocumento}"></td>
+                    <td class="row__content" th:text="${paciente.numeroDocumento}"></td>
+                    <td class="row__content" th:text="${paciente.nombres}"></td>
+                    <td class="row__content" th:text="${paciente.apellidos}"></td>
+                    <td class="row__content" th:text="${paciente.correo}"></td>
+                    <td class="row__content">
+                        <a class="content__link"
+                            th:href="@{/administrador/pacientes/Actualizar/{numeroDocumento}(numeroDocumento=${paciente.numeroDocumento}, nombres=${paciente.nombres}, apellidos=${paciente.apellidos}, tipoDocumento=${paciente.tipoDocumento}, correo=${paciente.correo}, telefono=${paciente.telefono}, barrio=${paciente.barrio},seguroMedico=${paciente.seguroMedico})}"
+                            style="color: rgb(90,193,236);"
+                            onclick="return confirm('¿Estás seguro de que deseas editar este paciente?');">Editar</a>
+                        <a class="content__link"
+                            th:href="@{/administrador/pacientes/Eliminar/{numeroDocumento}(numeroDocumento=${paciente.numeroDocumento})}"
+                            onclick="return confirm('¿Estás seguro de que deseas eliminar este paciente?');">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="list__container-button">
+          <a class="container-button__button" href="/administrador/pacientes/Registrar">Registrar Paciente</a>
+          <a class="container-button__button" href="/administrador">Pagina Principal</a>
+        </div>
     </main>
-  </body>
+</body>
+
 </html>

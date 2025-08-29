@@ -1,40 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/Listados.css}" />
     <link rel="icon" th:href="@{/imagenes/estetoscopio.png}">
-    <link rel="stylesheet" th:href="@{/css/listado.css}" />
-    <title>Listado_Admins</title>
-  </head>
-  <body>
-    <main>
-      <h1>Listado de Administradores</h1>
-      <table>
-        <tr>
-          <th>Numero Documento</th>
-          <th>Nombre(s)</th>
-          <th>Apellido(s)</th>
-          <th>Correo</th>
-          <th>Tipo Documento</th>
-          <th>Acciones</th>
-        </tr>
-        <tr th:each="admin : ${Listar_Admins}">
-          <td th:text="${admin.numeroDocumento}"></td>
-          <td th:text="${admin.nombres}"></td>
-          <td th:text="${admin.apellidos}"></td>
-          <td th:text="${admin.correo}"></td>
-          <td th:text="${admin.tipoDocumento}"></td>
-          <td class="Acciones">
-            <a class="Links" id="Editar" th:href="@{/administrador/administradores/Actualizar/{numeroDocumento}(numeroDocumento=${admin.numeroDocumento}, nombres=${admin.nombres}, apellidos=${admin.apellidos}, tipoDocumento=${admin.tipoDocumento}, correo=${admin.correo}, telefono=${admin.telefono}, barrio=${admin.barrio})}">Editar</a>
-            <a class="Links" id="Eliminar" th:href="@{/administrador/administradores/Eliminar/{numeroDocumento}(numeroDocumento=${admin.numeroDocumento})}" onclick="return confirm('¿Estás seguro de que deseas eliminar este administrador?');">Eliminar</a>
-          </td>
-        </tr>
-      </table>
-      <div class="contenedor">
-        <a class="Registro" href="/administrador/administradores/Registrar">Registrar Administrador</a>
-        <a class="Registro" href="/administrador" >Pagina Principal</a>
-      </div>
+    <title>Listado Administradores</title>
+</head>
+
+<body>
+    <main class="list">
+        <h1>Listado Administradores</h1>
+        <table class="list__table">
+            <thead class="table__title">
+                <tr class="title__row">
+                    <th class="row__title">Tipo Documento</th>
+                    <th class="row__title">Numero Documento</th>
+                    <th class="row__title">Nombre(s)</th>
+                    <th class="row__title">Apellido(s)</th>
+                    <th class="row__title">Especialidad</th>
+                    <th class="row__title">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="table__body">
+                <tr class="body__row" th:each="admin : ${Listar_Admins}">
+                    <td class="row__content" th:text="${admin.tipoDocumento}"></td>
+                    <td class="row__content" th:text="${admin.numeroDocumento}"></td>
+                    <td class="row__content" th:text="${admin.nombres}"></td>
+                    <td class="row__content" th:text="${admin.apellidos}"></td>
+                    <td class="row__content" th:text="${admin.correo}"></td>
+                    <td class="row__content">
+                        <a class="content__link"
+                            th:href="@{/administrador/administradores/Actualizar/{numeroDocumento}(numeroDocumento=${admin.numeroDocumento}, nombres=${admin.nombres}, apellidos=${admin.apellidos}, tipoDocumento=${admin.tipoDocumento}, correo=${admin.correo}, telefono=${admin.telefono}, barrio=${admin.barrio})}"
+                            style="color: rgb(90,193,236);"
+                            onclick="return confirm('¿Estás seguro de que deseas editar este administrador?');">Editar</a>
+                        <a class="content__link"
+                            th:href="@{/administrador/administradores/Eliminar/{numeroDocumento}(numeroDocumento=${admin.numeroDocumento})}"
+                            onclick="return confirm('¿Estás seguro de que deseas eliminar este administrador?');">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="list__container-button">
+            <a class="container-button__button" href="/administrador/administradores/Registrar">Registrar Administrador</a>
+            <a class="container-button__button" href="/administrador">Pagina Principal</a>
+        </div>
     </main>
-  </body>
+</body>
+
 </html>

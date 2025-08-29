@@ -4,10 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import com.leinner.springboot.vital_care.entities.Paciente;
 import com.leinner.springboot.vital_care.services.PacienteService;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @RequiredArgsConstructor
 @Controller
@@ -16,7 +18,7 @@ public class LoginController {
     private final PacienteService pacienteService;
     
     @GetMapping("/")
-    public String mostrarLogin(Model model) {
+    public String mostrarLogin() {
         return "General/Login";
     }
 

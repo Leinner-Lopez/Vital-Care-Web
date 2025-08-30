@@ -12,25 +12,25 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component
-public class RedirecciónUsuario implements AuthenticationSuccessHandler{
+public class RedirecciónUsuario implements AuthenticationSuccessHandler {
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
             Authentication authentication) throws IOException, ServletException {
         String redirectUrl = "/";
-        for(GrantedAuthority auth : authentication.getAuthorities()){
+        for (GrantedAuthority auth : authentication.getAuthorities()) {
             String role = auth.getAuthority();
-            if(role.equals("ROLE_ADMIN")){
+            if ("ROLE_ADMIN".equals(role)) {
                 redirectUrl = "/administrador";
                 break;
-            }else if(role.equals("ROLE_MEDICO")){
+            } else if ("ROLE_MEDICO".equals(role)) {
                 redirectUrl = "/medico";
                 break;
-            }else if(role.equals("ROLE_PACIENTE")){
+            } else if ("ROLE_PACIENTE".equals(role)) {
                 redirectUrl = "/paciente";
                 break;
             }
         }
-        response.sendRedirect(redirectUrl);   
-    }   
+        response.sendRedirect(redirectUrl);
+    }
 }

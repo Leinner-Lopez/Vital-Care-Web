@@ -90,4 +90,19 @@ public class CitaServiceImpl implements CitaService{
     public Cita agendarCita(Cita cita) {
         return citaRepository.save(cita);
     }
+
+    @Override
+    public Cita obtenerCitaporId(Long id) {
+        return citaRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Cita ReprogramarCita(Long id, Cita cita) {
+        Cita citaExistente = citaRepository.findById(id).orElse(null);
+        if(citaExistente != null){
+            citaExistente.setFechaCita(cita.getFechaCita());
+            citaRepository.save(citaExistente);
+        }
+        return null;
+    }
 }

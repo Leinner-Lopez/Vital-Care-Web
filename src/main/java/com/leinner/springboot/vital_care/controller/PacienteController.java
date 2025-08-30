@@ -24,6 +24,8 @@ import com.leinner.springboot.vital_care.services.PacienteService;
 
 import lombok.RequiredArgsConstructor;
 
+
+
 @RequiredArgsConstructor
 @RequestMapping("/paciente")
 @Controller
@@ -41,6 +43,7 @@ public class PacienteController {
         return "Paciente/PaginaPrincipal";
     }
 
+    //Listado de medicos
     @GetMapping("/medicos")
     public String mostrarMedicos(Model model) {
         List<MedicoDTO> medicos = medicoService.obtenerMedicosconDisponibilidad();
@@ -48,6 +51,7 @@ public class PacienteController {
         return "Paciente/ListadoMedicos";
     }
 
+    //Agendar cita medica teniendo en cuenta el medico elegido
     @GetMapping("/medicos/agendarCita/{numeroDocumento}")
     public String mostrarInterfazAgendarCitaMedica(@PathVariable Long numeroDocumento, Model model) {
         Medico medico = medicoService.obtenerMedicoPorId(numeroDocumento);
@@ -81,6 +85,27 @@ public class PacienteController {
     @GetMapping("/citas/Eliminar/{id}")
     public String eliminarCita(@PathVariable Long id) {
         citaService.eliminarCita(id);
+        return "redirect:/paciente/citas";
+    }
+
+    @GetMapping("/citas/Reprogramar/{id}")
+    public String mostrarFormularioReprogramación(@PathVariable Long id, Model model) {
+        Cita cita = citaService.obtenerCitaporId(id);
+        Medico medico = medicoService.obtenerMedicoPorId(cita.getDocumentoMedico());
+        List<LocalDateTime> fechasDisponibles = medicoService.obtenerFechasDisponiblesMedico(cita.getDocumentoMedico());
+        model.addAttribute("medico", medico);
+        model.addAttribute("fechaDisponibles", fechasDisponibles);
+        model.addAttribute("acción", "/paciente/citas/Reprogramar/" + id);
+        model.addAttribute("cita", new Cita());
+        return "Paciente/AgendarCita";
+    }
+
+    @PostMapping("/citas/Reprogramar/{id}")
+    public String postMethodName(@PathVariable Long id, @ModelAttribute Cita cita) {
+        Cita citaMedica = citaService.obtenerCitaporId(id);
+        cita.setDocumentoMedico(citaMedica.getDocumentoMedico());
+        cita.setDocumentoPaciente(citaMedica.getDocumentoPaciente());
+        citaService.ReprogramarCita(id, cita);
         return "redirect:/paciente/citas";
     }
 }

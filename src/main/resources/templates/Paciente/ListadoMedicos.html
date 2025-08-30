@@ -2,8 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8" 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/Listados.css}" />
     <link rel="icon" th:href="@{/imagenes/estetoscopio.png}">
     <title>Listado Medicos</title>
@@ -28,14 +27,16 @@
                     <td class="row__content" th:text="${medico.nombres}">Leinner</td>
                     <td class="row__content" th:text="${medico.apellidos}">Leinner</td>
                     <td class="row__content" th:text="${medico.especialidad}">Enfermero</td>
-                    <td class="row__content" th:text="${#temporals.format(medico.disponibilidadFinal, 'yyyy-MM-dd HH:mm')}"></td>
+                    <td class="row__content"
+                        th:text="${#temporals.format(medico.disponibilidadFinal, 'yyyy-MM-dd HH:mm')}"></td>
                     <td class="row__content"
                         th:style="${medico.disponibilidadFinal != null && medico.disponibilidadFinal > T(java.time.LocalDateTime).now() ? 'color: rgb(90, 174, 119);' : 'color: rgb(185, 34, 34);'}"
                         th:text="${medico.disponibilidadFinal != null && medico.disponibilidadFinal > T(java.time.LocalDateTime).now() ? 'Activo' : 'Inactivo'}">
                         Activo</td>
                     <td class="row__content">
-                        <a style="color: rgb(90, 193, 236);" class="content__link" th:href="@{/paciente/medicos/agendarCita/{numeroDocumento}(numeroDocumento=${medico.numeroDocumento})}"
-                        th:attr="data-disponibilidad-final=${#temporals.format(medico.disponibilidadFinal, 'yyyy-MM-dd HH:mm')}"
+                        <a style="color: rgb(90, 193, 236);" class="content__link"
+                            th:href="@{/paciente/medicos/agendarCita/{numeroDocumento}(numeroDocumento=${medico.numeroDocumento})}"
+                            th:attr="data-disponibilidad-final=${#temporals.format(medico.disponibilidadFinal, 'yyyy-MM-dd HH:mm')}"
                             onclick="return verificarDisponibilidad(this);">Agendar Cita</a>
                     </td>
                 </tr>
@@ -47,4 +48,5 @@
     </main>
     <script th:src="@{/js/VerificarDisponibilidad.js}"></script>
 </body>
+
 </html>

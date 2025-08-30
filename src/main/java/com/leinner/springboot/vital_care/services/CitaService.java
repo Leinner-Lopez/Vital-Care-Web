@@ -8,6 +8,8 @@ import com.leinner.springboot.vital_care.entities.Cita;
 
 public interface CitaService {
     Cita agendarCita(Cita cita);
+    Cita obtenerCitaporId(Long id);
+    Cita ReprogramarCita(Long id, Cita cita);
     List<CitaDTO> CitasDocumentoPaciente(Long numeroDocumento);
     List<CitaDTO> CitasDocumentoMedico(Long numeroDocumento);
     List<CitaDTO> ListarCitasMedicas();

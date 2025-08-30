@@ -35,6 +35,10 @@
                         th:text="${cita.fechaCita != null && cita.fechaCita > T(java.time.LocalDateTime).now() ? 'Activo' : 'Inactivo'}">
                         Activo</td>
                     <td class="row__content">
+                        <a class="content__link" th:href="@{/paciente/citas/Reprogramar/{id}(id=${cita.Id})}"
+                            th:attr="data-fechaCita=${#temporals.format(cita.fechaCita, 'yyyy-MM-dd HH:mm')}"
+                            style="color: rgb(90, 193, 236);"
+                            onclick="return verificarFechaCita(this);">Reprogramar</a>
                         <a class="content__link" th:href="@{/paciente/citas/Eliminar/{id}(id=${cita.Id})}"
                             onclick="return confirm('¿Estás seguro de que deseas eliminar esta cita medica?');">Eliminar</a>
                     </td>
@@ -45,5 +49,7 @@
             <a class="container-button__button" href="/paciente">Pagina Principal</a>
         </div>
     </main>
+    <script th:src="@{/js/VerificarFechaCita.js}"></script>
 </body>
+
 </html>

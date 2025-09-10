@@ -84,11 +84,13 @@ input:focus {
 .form__button:hover {
   background-color: #fff;
   color: rgb(90, 193, 236);
+  box-shadow: 0 0 12px rgb(90, 193, 236);
 }
 
-p{
+p {
   font-size: 1.1em;
 }
+
 a {
   color: rgb(90, 193, 236);
 }

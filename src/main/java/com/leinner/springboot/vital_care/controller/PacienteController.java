@@ -34,6 +34,7 @@ public class PacienteController {
     private final MedicoService medicoService;
     private final CitaService citaService;
 
+    //MOSTRAR PAGINA PRINCIPAL
     @GetMapping
     public String mostrarPaginaPrincipal(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -72,7 +73,7 @@ public class PacienteController {
         citaService.agendarCita(cita);
         return "redirect:/paciente/citas";
     }
-
+   //leer
     @GetMapping("/citas")
     public String mostrarCitas(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -81,13 +82,13 @@ public class PacienteController {
         model.addAttribute("Listar__Citas", citas);
         return "Paciente/ListadoCitas";
     }
-
+//eliminando
     @GetMapping("/citas/Eliminar/{id}")
     public String eliminarCita(@PathVariable Long id) {
         citaService.eliminarCita(id);
         return "redirect:/paciente/citas";
     }
-
+//leer
     @GetMapping("/citas/Reprogramar/{id}")
     public String mostrarFormularioReprogramación(@PathVariable Long id, Model model) {
         Cita cita = citaService.obtenerCitaporId(id);
@@ -99,7 +100,7 @@ public class PacienteController {
         model.addAttribute("cita", new Cita());
         return "Paciente/AgendarCita";
     }
-
+//envia
     @PostMapping("/citas/Reprogramar/{id}")
     public String postMethodName(@PathVariable Long id, @ModelAttribute Cita cita) {
         Cita citaMedica = citaService.obtenerCitaporId(id);

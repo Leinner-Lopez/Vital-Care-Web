@@ -139,24 +139,24 @@ public class AdministradorController {
 
     // Mostrar formulario para editar Usuario
     @GetMapping("/pacientes/Actualizar/{numeroDocumento}")
-    public String mostrarFormularioEditarPaciente(@PathVariable Long numeroDocumento, @ModelAttribute Paciente paciente,
-            Model model) {
+    public String mostrarFormularioEditarPaciente(@PathVariable Long numeroDocumento, Model model) {
+        Paciente paciente = pacienteService.obtenerPacientePorId(numeroDocumento);
         model.addAttribute("paciente", paciente);
         model.addAttribute("acción", "/administrador/pacientes/Actualizar/" + numeroDocumento);
         return "Administrador/Editar/EditarPacientes";
     }
 
     @GetMapping("/medicos/Actualizar/{numeroDocumento}")
-    public String mostrarFormularioEditarMedico(@PathVariable Long numeroDocumento, @ModelAttribute Medico medico,
-            Model model) {
+    public String mostrarFormularioEditarMedico(@PathVariable Long numeroDocumento, Model model) {
+        Medico medico = medicoService.obtenerMedicoPorId(numeroDocumento);
         model.addAttribute("medico", medico);
         model.addAttribute("acción", "/administrador/medicos/Actualizar/" + numeroDocumento);
         return "Administrador/Editar/EditarMedicos";
     }
 
     @GetMapping("/administradores/Actualizar/{numeroDocumento}")
-    public String mostrarFormularioEditarAdministrador(@PathVariable Long numeroDocumento,
-            @ModelAttribute Administrador admin, Model model) {
+    public String mostrarFormularioEditarAdministrador(@PathVariable Long numeroDocumento, Model model) {
+        Administrador admin = administradorService.obtenerAdministradorPorId(numeroDocumento);
         model.addAttribute("admin", admin);
         model.addAttribute("acción", "/administrador/administradores/Actualizar/" + numeroDocumento);
         return "Administrador/Editar/EditarAdministrador";

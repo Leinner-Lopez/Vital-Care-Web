@@ -32,7 +32,7 @@
                     <td class="row__content" th:text="${medico.especialidad}"></td>
                     <td class="row__content">
                         <a class="content__link"
-                            th:href="@{/administrador/medicos/Actualizar/{numeroDocumento}(numeroDocumento=${medico.numeroDocumento}, nombres=${medico.nombres}, apellidos=${medico.apellidos}, tipoDocumento=${medico.tipoDocumento}, correo=${medico.correo}, telefono=${medico.telefono}, barrio=${medico.barrio},especialidad=${medico.especialidad})}"
+                            th:href="@{/administrador/medicos/Actualizar/{numeroDocumento}(numeroDocumento=${medico.numeroDocumento})}"
                             style="color: rgb(90,193,236);"
                             onclick="return confirm('¿Estás seguro de que deseas editar este medico?');">Editar</a>
                         <a class="content__link"

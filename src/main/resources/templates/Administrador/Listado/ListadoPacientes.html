@@ -32,7 +32,7 @@
                     <td class="row__content" th:text="${paciente.correo}"></td>
                     <td class="row__content">
                         <a class="content__link"
-                            th:href="@{/administrador/pacientes/Actualizar/{numeroDocumento}(numeroDocumento=${paciente.numeroDocumento}, nombres=${paciente.nombres}, apellidos=${paciente.apellidos}, tipoDocumento=${paciente.tipoDocumento}, correo=${paciente.correo}, telefono=${paciente.telefono}, barrio=${paciente.barrio},seguroMedico=${paciente.seguroMedico})}"
+                            th:href="@{/administrador/pacientes/Actualizar/{numeroDocumento}(numeroDocumento=${paciente.numeroDocumento})}"
                             style="color: rgb(90,193,236);"
                             onclick="return confirm('¿Estás seguro de que deseas editar este paciente?');">Editar</a>
                         <a class="content__link"
@@ -43,8 +43,8 @@
             </tbody>
         </table>
         <div class="list__container-button">
-          <a class="container-button__button" href="/administrador/pacientes/Registrar">Registrar Paciente</a>
-          <a class="container-button__button" href="/administrador">Pagina Principal</a>
+            <a class="container-button__button" href="/administrador/pacientes/Registrar">Registrar Paciente</a>
+            <a class="container-button__button" href="/administrador">Pagina Principal</a>
         </div>
     </main>
 </body>

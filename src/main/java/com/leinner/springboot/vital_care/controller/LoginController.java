@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class LoginController {
 
     private final PacienteService pacienteService;
-    
+
     @GetMapping("/")
     public String mostrarLogin() {
         return "General/Login";
@@ -27,14 +27,14 @@ public class LoginController {
         model.addAttribute("paciente", new Paciente());
         model.addAttribute("acción", "/Registro");
         return "General/RegistroPacientes";
-    }  
+    }
 
     @PostMapping("/Registro")
-    public String registrarPaciente(@ModelAttribute Paciente paciente, Model model){
-        if(pacienteService.obtenerPacientePorId(paciente.getNumeroDocumento()) != null){
+    public String registrarPaciente(@ModelAttribute Paciente paciente, Model model) {
+        if (pacienteService.obtenerPacientePorId(paciente.getNumeroDocumento()) != null) {
             model.addAttribute("error", "El número de documento ya está registrado");
             return "General/RegistroPacientes";
-        }else{
+        } else {
             pacienteService.registrarPaciente(paciente);
             return "redirect:/";
         }

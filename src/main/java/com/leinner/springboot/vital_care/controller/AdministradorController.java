@@ -199,5 +199,4 @@ public class AdministradorController {
         administradorService.eliminarAdministrador(numeroDocumento);
         return "redirect:/administrador/administradores";
     }
-
 }

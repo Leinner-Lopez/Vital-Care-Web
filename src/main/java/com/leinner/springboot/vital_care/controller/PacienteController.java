@@ -24,8 +24,6 @@ import com.leinner.springboot.vital_care.services.PacienteService;
 
 import lombok.RequiredArgsConstructor;
 
-
-
 @RequiredArgsConstructor
 @RequestMapping("/paciente")
 @Controller
@@ -34,7 +32,7 @@ public class PacienteController {
     private final MedicoService medicoService;
     private final CitaService citaService;
 
-    //MOSTRAR PAGINA PRINCIPAL
+    // MOSTRAR PAGINA PRINCIPAL
     @GetMapping
     public String mostrarPaginaPrincipal(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -44,7 +42,7 @@ public class PacienteController {
         return "Paciente/PaginaPrincipal";
     }
 
-    //Listado de medicos
+    // Listado de medicos
     @GetMapping("/medicos")
     public String mostrarMedicos(Model model) {
         List<MedicoDTO> medicos = medicoService.obtenerMedicosconDisponibilidad();
@@ -52,7 +50,7 @@ public class PacienteController {
         return "Paciente/ListadoMedicos";
     }
 
-    //Agendar cita medica teniendo en cuenta el medico elegido
+    // Agendar cita medica teniendo en cuenta el medico elegido
     @GetMapping("/medicos/agendarCita/{numeroDocumento}")
     public String mostrarInterfazAgendarCitaMedica(@PathVariable Long numeroDocumento, Model model) {
         Medico medico = medicoService.obtenerMedicoPorId(numeroDocumento);
@@ -65,7 +63,7 @@ public class PacienteController {
     }
 
     @PostMapping("/medicos/agendarCita/{numeroDocumento}")
-    public String agendarCitaMedica(@PathVariable Long numeroDocumento,@ModelAttribute Cita cita) {
+    public String agendarCitaMedica(@PathVariable Long numeroDocumento, @ModelAttribute Cita cita) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Long numeroDocumentoP = Long.valueOf(auth.getName());
         cita.setDocumentoPaciente(numeroDocumentoP);
@@ -73,7 +71,8 @@ public class PacienteController {
         citaService.agendarCita(cita);
         return "redirect:/paciente/citas";
     }
-   //leer
+
+    // leer
     @GetMapping("/citas")
     public String mostrarCitas(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -82,13 +81,15 @@ public class PacienteController {
         model.addAttribute("Listar__Citas", citas);
         return "Paciente/ListadoCitas";
     }
-//eliminando
+
+    // eliminando
     @GetMapping("/citas/Eliminar/{id}")
     public String eliminarCita(@PathVariable Long id) {
         citaService.eliminarCita(id);
         return "redirect:/paciente/citas";
     }
-//leer
+
+    // leer
     @GetMapping("/citas/Reprogramar/{id}")
     public String mostrarFormularioReprogramación(@PathVariable Long id, Model model) {
         Cita cita = citaService.obtenerCitaporId(id);
@@ -100,7 +101,8 @@ public class PacienteController {
         model.addAttribute("cita", new Cita());
         return "Paciente/AgendarCita";
     }
-//envia
+
+    // envia
     @PostMapping("/citas/Reprogramar/{id}")
     public String postMethodName(@PathVariable Long id, @ModelAttribute Cita cita) {
         Cita citaMedica = citaService.obtenerCitaporId(id);

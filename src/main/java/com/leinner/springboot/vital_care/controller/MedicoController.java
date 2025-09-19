@@ -21,15 +21,11 @@ import com.leinner.springboot.vital_care.services.MedicoService;
 
 import lombok.RequiredArgsConstructor;
 
-
-
-
-
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("/medico")
 public class MedicoController {
-    
+
     private final MedicoService medicoService;
     private final CitaService citaService;
     private final DisponibilidadService disponibilidadService;
@@ -56,8 +52,8 @@ public class MedicoController {
         Long numeroDocumento = Long.valueOf(auth.getName());
         disponibilidadService.actualizarDisponibilidad(numeroDocumento, disponibilidad);
         return "redirect:/medico";
-    }   
-    
+    }
+
     @GetMapping("/citas")
     public String mostrarCitas(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -66,11 +62,10 @@ public class MedicoController {
         model.addAttribute("Listar_Citas", citas);
         return "Medico/ListadoCitas";
     }
-    
+
     @GetMapping("/citas/Eliminar")
     public String eliminarCita(@PathVariable Long Id) {
         citaService.eliminarCita(Id);
         return "redirect:/medico/citas";
     }
-    
 }

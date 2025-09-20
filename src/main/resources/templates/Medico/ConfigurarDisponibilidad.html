@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/Disponibilidad.css}" />
+    <link rel="stylesheet" th:href="@{/css/disponibilidad.css}" />
     <link rel="icon" th:href="@{/imagenes/estetoscopio.png}">
     <title>Disponibilidad</title>
 </head>
@@ -31,6 +31,14 @@
             </div>
         </form>
     </main>
+    <div id="fondoDialogo" class="dialog__background">
+        <dialog id="Model" class="dialog">
+            <p class="dialog__text" id="model-text">La Fecha Final debe ser después de la Fecha Inicial</p>
+            <div class="dialog__buttons">
+                <button id="acceptConfirmButton" class="dialog__button">Aceptar</button>
+            </div>
+        </dialog>
+    </div>
     <script th:src="@{/js/ConfigurarFecha.js}"></script>
 </body>
 

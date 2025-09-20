@@ -3,9 +3,17 @@ function verificarDisponibilidad(link) {
         "data-disponibilidad-final"
     );
     const fechaActual = new Date();
+    const dialog = document.getElementById("expiredDialog");
+    const fondoDialog = document.getElementById("fondoDialogo");
+    const acceptButton = document.getElementById("acceptButton");
     const fechaDisponibilidad = new Date(disponibilidadFinal);
     if (fechaDisponibilidad < fechaActual) {
-        alert("La disponibilidad del médico ha expirado.");
+        fondoDialog.style.display='block';
+        dialog.showModal();
+        acceptButton.onclick = function(){
+            fondoDialog.style.display='none';
+            dialog.close();
+        };
         return false;
     }
     return true;

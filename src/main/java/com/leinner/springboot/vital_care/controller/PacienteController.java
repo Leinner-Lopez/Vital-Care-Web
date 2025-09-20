@@ -104,7 +104,7 @@ public class PacienteController {
 
     // envia
     @PostMapping("/citas/Reprogramar/{id}")
-    public String postMethodName(@PathVariable Long id, @ModelAttribute Cita cita) {
+    public String reprogramarCita(@PathVariable Long id, @ModelAttribute Cita cita) {
         Cita citaMedica = citaService.obtenerCitaporId(id);
         cita.setDocumentoMedico(citaMedica.getDocumentoMedico());
         cita.setDocumentoPaciente(citaMedica.getDocumentoPaciente());

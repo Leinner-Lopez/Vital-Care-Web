@@ -63,7 +63,7 @@ public class MedicoController {
         return "Medico/ListadoCitas";
     }
 
-    @GetMapping("/citas/Eliminar")
+    @GetMapping("/citas/Eliminar/{Id}")
     public String eliminarCita(@PathVariable Long Id) {
         citaService.eliminarCita(Id);
         return "redirect:/medico/citas";

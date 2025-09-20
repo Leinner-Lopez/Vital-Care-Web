@@ -33,11 +33,12 @@
                     <td class="row__content">
                         <a class="content__link"
                             th:href="@{/administrador/pacientes/Actualizar/{numeroDocumento}(numeroDocumento=${paciente.numeroDocumento})}"
-                            style="color: rgb(90,193,236);"
-                            onclick="return confirm('¿Estás seguro de que deseas editar este paciente?');">Editar</a>
+                            th:attr="data-href-update=@{/administrador/pacientes/Actualizar/{numeroDocumento}(numeroDocumento=${paciente.numeroDocumento})}"
+                            style="color: rgb(90,193,236);" onclick="return functionPaciente(this);">Editar</a>
                         <a class="content__link"
                             th:href="@{/administrador/pacientes/Eliminar/{numeroDocumento}(numeroDocumento=${paciente.numeroDocumento})}"
-                            onclick="return confirm('¿Estás seguro de que deseas eliminar este paciente?');">Eliminar</a>
+                            th:attr="data-href-delete=@{/administrador/pacientes/Eliminar/{numeroDocumento}(numeroDocumento=${paciente.numeroDocumento})}"
+                            onclick="return functionPaciente(this);">Eliminar</a>
                     </td>
                 </tr>
             </tbody>
@@ -47,6 +48,16 @@
             <a class="container-button__button" href="/administrador">Pagina Principal</a>
         </div>
     </main>
+    <div id="fondoDialogo" class="dialog__background">
+        <dialog id="Model" class="dialog">
+            <p class="dialog__text" id="model-text">¿Estás seguro de Editar este Paciente?</p>
+            <div class="dialog__buttons">
+                <button id="cancelConfirmButton" class="dialog__button">Cancelar</button>
+                <button id="acceptConfirmButton" class="dialog__button">Aceptar</button>
+            </div>
+        </dialog>
+    </div>
+    <script th:src="@{/js/FuncionesPaciente.js}"></script>
 </body>
 
 </html>

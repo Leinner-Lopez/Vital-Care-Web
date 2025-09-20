@@ -33,20 +33,32 @@
                     <td class="row__content">
                         <a class="content__link"
                             th:href="@{/administrador/administradores/Actualizar/{numeroDocumento}(numeroDocumento=${admin.numeroDocumento})}"
-                            style="color: rgb(90,193,236);"
-                            onclick="return confirm('¿Estás seguro de que deseas editar este administrador?');">Editar</a>
+                            th:attr="data-href-update=@{/administrador/administradores/Actualizar/{numeroDocumento}(numeroDocumento=${admin.numeroDocumento})}"
+                            style="color: rgb(90,193,236);" onclick="return functionAdministrador(this);">Editar</a>
                         <a class="content__link"
                             th:href="@{/administrador/administradores/Eliminar/{numeroDocumento}(numeroDocumento=${admin.numeroDocumento})}"
-                            onclick="return confirm('¿Estás seguro de que deseas eliminar este administrador?');">Eliminar</a>
+                            th:attr="data-href-delete=@{/administrador/administradores/Eliminar/{numeroDocumento}(numeroDocumento=${admin.numeroDocumento})}"
+                            onclick="return functionAdministrador(this);">Eliminar</a>
                     </td>
                 </tr>
             </tbody>
         </table>
         <div class="list__container-button">
-            <a class="container-button__button" href="/administrador/administradores/Registrar">Registrar Administrador</a>
+            <a class="container-button__button" href="/administrador/administradores/Registrar">Registrar
+                Administrador</a>
             <a class="container-button__button" href="/administrador">Pagina Principal</a>
         </div>
     </main>
+    <div id="fondoDialogo" class="dialog__background">
+        <dialog id="Model" class="dialog">
+            <p class="dialog__text" id="model-text">¿Estás seguro de Editar este Administrador?</p>
+            <div class="dialog__buttons">
+                <button id="cancelConfirmButton" class="dialog__button">Cancelar</button>
+                <button id="acceptConfirmButton" class="dialog__button">Aceptar</button>
+            </div>
+        </dialog>
+    </div>
+    <script th:src="@{/js/FuncionesAdministrador.js}"></script>
 </body>
 
 </html>

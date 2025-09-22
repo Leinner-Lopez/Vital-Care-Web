@@ -53,7 +53,7 @@ label {
 
 input,
 select,
-.link {
+.form__link {
   background-color: #5ac1ec1a;
   width: 100%;
   padding: 10px;
@@ -68,12 +68,12 @@ select,
 
 input:is(:focus, :hover),
 select:is(:focus, :hover),
-.link:hover {
+.form__link:hover {
   box-shadow: 0 0 8px rgb(90, 193, 236);
 }
 
 .form__button,
-.link {
+.form__link {
   background-color: rgb(90, 193, 236);
   color: #fff;
   font-size: 1.2em;
@@ -85,22 +85,19 @@ select:is(:focus, :hover),
   transition: background-color .5s, color .5s;
 }
 
-.link {
+.form__link {
   text-align: center;
   text-decoration: none;
 }
 
 .form__button:hover,
-.link:hover {
+.form__link:hover {
   background-color: #fff;
   color: rgb(90, 193, 236);
 }
 
-.input-container--buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  align-items: center;
+.form__button-container {
+  display: flex;
 }
 
 p {

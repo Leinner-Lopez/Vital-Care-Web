@@ -13,7 +13,7 @@
     <main class="form">
         <h1>Formulario de Registro</h1>
         <div th:if="${error}" th:text="${error}" style="color: #f00; font-size: 1.3em;"></div>
-        <form th:object="${paciente}" th:action="${acción}" method="post" class="form__form">
+        <form th:object="${paciente}" th:action="${acción}" method="post" class="form__form" id="Formulario">
             <fieldset class="form__info-group">
                 <legend class="info-group__description">Información del Usuario</legend>
                 <div class="info-group__input-container">
@@ -38,7 +38,7 @@
                         </select>
                     </div>
                     <div class="input-container">
-                        <label>Numero de Documento<input type="text" th:field="*{numeroDocumento}" required /></label>
+                        <label>Numero de Documento<input type="text" th:field="*{numeroDocumento}" placeholder="01234567" minlength="8" required /></label>
                     </div>
                     <div class="input-container">
                         <datalist id="Barrios">
@@ -203,9 +203,9 @@
                     </div>
                 </div>
             </fieldset>
-            <div class="input-container input-container--buttons">
+            <div class="form__button-container">
                 <input type="submit" value="Registrar" class="form__button" />
-                <a href="/administrador/pacientes" class="link">Regresar</a>
+                <a href="/administrador/pacientes" class="form__link">Regresar</a>
             </div>
         </form>
     </main>

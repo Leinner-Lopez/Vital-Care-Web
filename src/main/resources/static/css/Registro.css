@@ -83,6 +83,7 @@ select:is(:focus, :hover),
   border: 2px solid rgb(90, 193, 236);
   cursor: pointer;
   transition: background-color .5s, color .5s;
+  max-width: 400px;
 }
 
 .form__link {
@@ -98,6 +99,7 @@ select:is(:focus, :hover),
 
 .form__button-container {
   display: flex;
+  justify-content: center;
 }
 
 p {

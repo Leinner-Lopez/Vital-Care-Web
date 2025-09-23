@@ -3,6 +3,9 @@ const now = new Date();
 const offset = now.getTimezoneOffset();
 const localDate = new Date(now.getTime() - offset * 60 * 1000);
 const minDateTime = localDate.toISOString().slice(0, 16);
+const Modal = document.getElementById("Model");
+const confirmButton = document.getElementById("acceptConfirmButton");
+const fondoDialogo = document.getElementById("fondoDialogo");
 
 document.getElementById("FechaInicial").min = minDateTime;
 document.getElementById("FechaFinal").min = minDateTime;
@@ -15,6 +18,11 @@ document
         var fechaFinal = new Date(document.getElementById("FechaFinal").value);
         if (fechaFinal <= fechaInicial) {
             event.preventDefault();
-            alert("La fecha final debe ser posterior a la fecha inicial.");
+            fondoDialogo.style.display='block';
+            Modal.showModal();
+            confirmButton.onclick = function(){
+                fondoDialogo.style.display='none';
+                Modal.close();
+            }
         }
     });

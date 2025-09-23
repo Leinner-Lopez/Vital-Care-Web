@@ -35,12 +35,12 @@
                         th:text="${cita.fechaCita != null && cita.fechaCita > T(java.time.LocalDateTime).now() ? 'Activo' : 'Inactivo'}">
                         Activo</td>
                     <td class="row__content">
-                        <a class="content__link" th:href="@{/paciente/citas/Reprogramar/{id}(id=${cita.Id})}"
-                            th:attr="data-fechaCita=${#temporals.format(cita.fechaCita, 'yyyy-MM-dd HH:mm')}"
-                            style="color: rgb(90, 193, 236);"
-                            onclick="return verificarFechaCita(this);">Reprogramar</a>
-                        <a class="content__link" th:href="@{/paciente/citas/Eliminar/{id}(id=${cita.Id})}"
-                            onclick="return confirm('¿Estás seguro de que deseas eliminar esta cita medica?');">Eliminar</a>
+                        <a class="content__link"
+                            th:attr="data-fechaCita=${#temporals.format(cita.fechaCita, 'yyyy-MM-dd HH:mm')}, data-href=@{/paciente/citas/Reprogramar/{id}(id=${cita.Id})}"
+                            th:href="@{/paciente/citas/Reprogramar/{id}(id=${cita.Id})}"
+                            style="color: rgb(90, 193, 236);" onclick="return verificarFechaCita(this);">Reprogramar</a>
+                        <a class="content__link" th:attr="data-href=@{/paciente/citas/Eliminar/{id}(id=${cita.Id})}" th:href="@{/paciente/citas/Eliminar/{id}(id=${cita.Id})}"
+                            onclick="return eliminarCita(this);">Eliminar</a>
                     </td>
                 </tr>
             </tbody>
@@ -49,7 +49,15 @@
             <a class="container-button__button" href="/paciente">Pagina Principal</a>
         </div>
     </main>
+    <div class="dialog__background" id="fondoDialogo">
+        <dialog class="dialog" id="Model">
+            <p class="dialog__text" id="model-text">No puedes reprogramar esta cita medica</p>
+            <div class="dialog__buttons">
+                <button id="cancelConfirmButton" class="dialog__button">Cancelar</button>
+                <button id="acceptConfirmButton" class="dialog__button">Aceptar</button>
+            </div>
+        </dialog>
+    </div>
     <script th:src="@{/js/VerificarFechaCita.js}"></script>
 </body>
-
 </html>

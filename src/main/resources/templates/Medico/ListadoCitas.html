@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/Listados.css}"/>
+    <link rel="stylesheet" th:href="@{/css/Listados.css}" />
     <link rel="icon" th:href="@{/imagenes/estetoscopio.png}">
     <title>Listado Medicos</title>
 </head>
+
 <body>
     <main class="list">
         <h1>Listado de Citas</h1>
@@ -33,8 +34,9 @@
                         th:text="${cita.fechaCita != null && cita.fechaCita > T(java.time.LocalDateTime).now() ? 'Activo' : 'Inactivo'}">
                         Activo</td>
                     <td class="row__content">
-                        <a class="content__link" th:href="@{/medico/citas/Eliminar/{id}(id=${cita.Id})}"
-                            onclick="return confirm('¿Estás seguro de que deseas eliminar esta cita medica?');">Eliminar</a>
+                        <a class="content__link" th:attr="data-href=@{/medico/citas/Eliminar/{id}(id=${cita.Id})}"
+                            th:href="@{/medico/citas/Eliminar/{id}(id=${cita.Id})}"
+                            onclick="return eliminarCita(this);">Eliminar</a>
                     </td>
                 </tr>
             </tbody>
@@ -43,5 +45,15 @@
             <a class="container-button__button" href="/medico">Pagina Principal</a>
         </div>
     </main>
+    <div class="dialog__background" id="fondoDialogo">
+        <dialog class="dialog" id="Model">
+            <p class="dialog__text" id="model-text">No puedes reprogramar esta cita medica</p>
+            <div class="dialog__buttons">
+                <button id="cancelConfirmButton" class="dialog__button">Cancelar</button>
+                <button id="acceptConfirmButton" class="dialog__button">Aceptar</button>
+            </div>
+        </dialog>
+    </div>
+    <script th:src="@{/js/VerificarFechaCita.js}"></script>
 </body>
 </html>

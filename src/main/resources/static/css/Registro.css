@@ -68,12 +68,13 @@ select,
 
 input:is(:focus, :hover),
 select:is(:focus, :hover),
-.form__link:hover {
+.form__link:hover, .dialog__button:hover {
   box-shadow: 0 0 8px rgb(90, 193, 236);
 }
 
 .form__button,
-.form__link {
+.form__link,
+.dialog__button{
   background-color: rgb(90, 193, 236);
   color: #fff;
   font-size: 1.2em;
@@ -92,7 +93,8 @@ select:is(:focus, :hover),
 }
 
 .form__button:hover,
-.form__link:hover {
+.form__link:hover, 
+.dialog__button:hover{
   background-color: #fff;
   color: rgb(90, 193, 236);
 }
@@ -114,6 +116,49 @@ a {
 
 a:not(:is(:hover, :active)) {
   text-decoration: none;
+}
+
+.dialog__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  display: none;
+}
+
+.dialog {
+  z-index: 20;
+  position: fixed;
+  font-family: inherit;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 24px;
+  border: 2px solid rgb(90, 193, 236);
+  width: 400px;
+  height: 160px;
+  align-items: center;
+}
+
+.dialog__text {
+  text-align: center;
+  margin: 18px 0;
+  font-size: 1.5em;
+}
+
+.dialog__buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.dialog__button{
+  min-width: 200px;
+  font-size: 1.5em;
+  padding: 12px;
 }
 
 /*-----------MEDIA QUERIES-----------*/

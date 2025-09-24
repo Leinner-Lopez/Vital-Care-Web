@@ -18,10 +18,12 @@
                 <legend class="info-group__description">Información del Usuario</legend>
                 <div class="info-group__input-container">
                     <div class="input-container">
-                        <label>Nombre(s)<input type="text" th:field="*{nombres}" placeholder="Andres" required /></label>
+                        <label>Nombre(s)<input type="text" th:field="*{nombres}" placeholder="Andres"
+                                required /></label>
                     </div>
                     <div class="input-container">
-                        <label>Apellido(s)<input type="text" th:field="*{apellidos}" placeholder="Torres" required /></label>
+                        <label>Apellido(s)<input type="text" th:field="*{apellidos}" placeholder="Torres"
+                                required /></label>
                     </div>
                     <div class="input-container">
                         <label for="Tipos Documento">Tipo de Documento</label>
@@ -36,7 +38,8 @@
                         </select>
                     </div>
                     <div class="input-container">
-                        <label>Numero de Documento<input type="text" th:field="*{numeroDocumento}" minlength="8" required /></label>
+                        <label>Numero de Documento<input type="text" th:field="*{numeroDocumento}" minlength="8"
+                                required /></label>
                     </div>
                     <div class="input-container">
                         <datalist id="Barrios">
@@ -274,10 +277,12 @@
                 <legend class="info-group__description">Información de contacto</legend>
                 <div class="info-group__input-container">
                     <div class="input-container">
-                        <label>Email<input type="email" th:field="*{correo}" placeholder="email@gmail.com" required /></label>
+                        <label>Email<input type="email" th:field="*{correo}" placeholder="email@gmail.com"
+                                required /></label>
                     </div>
                     <div class="input-container">
-                        <label>Teléfono<input type="text" th:field="*{telefono}" placeholder="0123456789" required /></label>
+                        <label>Teléfono<input type="text" th:field="*{telefono}" placeholder="0123456789"
+                                required /></label>
                     </div>
                 </div>
             </fieldset>
@@ -299,6 +304,15 @@
             <p>¿Ya tienes una cuenta? <a th:href="@{/}">Inicia sesión</a></p>
         </form>
     </main>
-    <script th:src="@{js/Registro.js}"></script>
+    <div id="fondoDialogo" class="dialog__background">
+        <dialog id="Model" class="dialog">
+            <p class="dialog__text" id="model-text">Las contraseñas no son iguales</p>
+            <div class="dialog__buttons">
+                <button id="acceptConfirmButton" class="dialog__button">Aceptar</button>
+            </div>
+        </dialog>
+    </div>
+    <script th:src="@{/js/Registro.js}"></script>
 </body>
+
 </html>

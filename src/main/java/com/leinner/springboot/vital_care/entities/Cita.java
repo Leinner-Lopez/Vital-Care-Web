@@ -22,3 +22,4 @@ public class Cita{
     private LocalDateTime fechaCita;
     private Long documentoPaciente;
 }
+//hola

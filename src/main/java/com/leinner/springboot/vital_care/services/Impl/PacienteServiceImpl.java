@@ -1,19 +1,23 @@
 package com.leinner.springboot.vital_care.services.Impl;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.leinner.springboot.vital_care.entities.Paciente;
 import com.leinner.springboot.vital_care.repository.PacienteRepository;
 import com.leinner.springboot.vital_care.services.PacienteService;
 
+import lombok.RequiredArgsConstructor;
+
+
 @Service
+@RequiredArgsConstructor
 public class PacienteServiceImpl implements PacienteService {
     
-    @Autowired
-    PacienteRepository pacienteRepository;
-
+    private final PacienteRepository pacienteRepository;
+    private final PasswordEncoder passwordEncoder;
     @Override
     public List<Paciente> obtenerPacientes() {
         return pacienteRepository.findAll();
@@ -27,6 +31,7 @@ public class PacienteServiceImpl implements PacienteService {
 
     @Override
     public Paciente registrarPaciente(Paciente paciente) {
+        paciente.setContrasena(passwordEncoder.encode(paciente.getContrasena()));
         return pacienteRepository.save(paciente);
     }
 
@@ -47,7 +52,7 @@ public class PacienteServiceImpl implements PacienteService {
             pacienteExistente.setBarrio(paciente.getBarrio());
             pacienteExistente.setSeguroMedico(paciente.getSeguroMedico());
             if(paciente.getContrasena() != null && !paciente.getContrasena().isEmpty()){
-                pacienteExistente.setContrasena(paciente.getContrasena());
+                pacienteExistente.setContrasena(passwordEncoder.encode(paciente.getContrasena()));
             }
             return pacienteRepository.save(pacienteExistente);
         }

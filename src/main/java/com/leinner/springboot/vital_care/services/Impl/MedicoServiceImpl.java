@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.leinner.springboot.vital_care.dto.MedicoDTO;
@@ -26,6 +27,7 @@ public class MedicoServiceImpl implements MedicoService{
     private final MedicoRepository medicoRepository;
     private final DisponibilidadService disponibilidadService;
     private final CitaRepository citaRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public List<Medico> obtenerMedicos() {
@@ -57,6 +59,7 @@ public class MedicoServiceImpl implements MedicoService{
 
     @Override
     public Medico registrarMedico(Medico medico) {
+        medico.setContrasena(passwordEncoder.encode(medico.getContrasena()));
         return medicoRepository.save(medico);
     }
 
@@ -77,7 +80,7 @@ public class MedicoServiceImpl implements MedicoService{
             medicoExistente.setBarrio(medico.getBarrio());
             medicoExistente.setEspecialidad(medico.getEspecialidad());
             if(medico.getContrasena() != null && !medico.getContrasena().isEmpty()){
-                medicoExistente.setContrasena(medico.getContrasena());
+                medicoExistente.setContrasena(passwordEncoder.encode(medico.getContrasena()));
             }
             return medicoRepository.save(medicoExistente);
         }

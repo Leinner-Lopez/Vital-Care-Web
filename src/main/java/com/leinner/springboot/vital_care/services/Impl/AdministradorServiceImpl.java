@@ -2,18 +2,21 @@ package com.leinner.springboot.vital_care.services.Impl;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.leinner.springboot.vital_care.entities.Administrador;
 import com.leinner.springboot.vital_care.repository.AdministradorRepository;
 import com.leinner.springboot.vital_care.services.AdministradorService;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class AdministradorServiceImpl implements AdministradorService{
     
-    @Autowired
-    AdministradorRepository administradorRepository;
+    private final AdministradorRepository administradorRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public List<Administrador> obtenerAdministradores() {
@@ -28,6 +31,7 @@ public class AdministradorServiceImpl implements AdministradorService{
 
     @Override
     public Administrador registrarAdministrador(Administrador administrador) {
+        administrador.setContrasena(passwordEncoder.encode(administrador.getContrasena()));
         return administradorRepository.save(administrador);
     }
 
@@ -47,7 +51,7 @@ public class AdministradorServiceImpl implements AdministradorService{
             adminExistente.setTelefono(administrador.getTelefono());
             adminExistente.setBarrio(administrador.getBarrio());
             if(administrador.getContrasena()!=null && !administrador.getContrasena().isEmpty()){
-                adminExistente.setContrasena(administrador.getContrasena());
+                adminExistente.setContrasena(passwordEncoder.encode(administrador.getContrasena()));
             }
             return administradorRepository.save(adminExistente);
         }

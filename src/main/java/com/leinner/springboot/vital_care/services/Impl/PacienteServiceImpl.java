@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.leinner.springboot.vital_care.entities.Cita;
 import com.leinner.springboot.vital_care.entities.Paciente;
+import com.leinner.springboot.vital_care.repository.CitaRepository;
 import com.leinner.springboot.vital_care.repository.PacienteRepository;
 import com.leinner.springboot.vital_care.services.PacienteService;
 
@@ -18,6 +20,8 @@ public class PacienteServiceImpl implements PacienteService {
     
     private final PacienteRepository pacienteRepository;
     private final PasswordEncoder passwordEncoder;
+    private final CitaRepository citaRepository;
+
     @Override
     public List<Paciente> obtenerPacientes() {
         return pacienteRepository.findAll();
@@ -37,6 +41,8 @@ public class PacienteServiceImpl implements PacienteService {
 
     @Override
     public void eliminarPaciente(Long numeroDocumento) {
+        List<Cita> citas = citaRepository.findByDocumentoPaciente(numeroDocumento);
+        citaRepository.deleteAll(citas);
         pacienteRepository.deleteById(numeroDocumento);
     }
 

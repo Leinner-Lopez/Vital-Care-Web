@@ -65,6 +65,8 @@ public class MedicoServiceImpl implements MedicoService{
 
     @Override
     public void eliminarMedico(Long numeroDocumento) {
+        List<Cita> citas = citaRepository.findByDocumentoMedico(numeroDocumento);
+        citaRepository.deleteAll(citas);
         medicoRepository.deleteById(numeroDocumento);
     }
 
